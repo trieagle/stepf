@@ -20,7 +20,7 @@ class Task(models.Model):
     nstep = models.IntegerField()
 
     #current step
-    curr_step = models.IntegerField()
+    curr_step = models.IntegerField(default=0)
 
     #remind user in someday
     frequence = models.IntegerField(default=-1) 
@@ -30,6 +30,22 @@ class Task(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def _update_time(self):
+        task.update_time = datetime.datetime.now()
+
+
+
+    def do_step(self, stp):
+
+        if (stp == 1 and stepself.curr_step < self.nstep) or \
+            (stp == -1 and stepself.curr_step > 0):
+            self.curr_step += stp
+            self._update_time()
+
+    def remove_self(self):
+        self.alive = 0
+
     
 class Message(models.Model):
 
