@@ -1,0 +1,31 @@
+﻿
+{% extends "account/abase.html" %}
+
+{% block title%}Account Login{% endblock%}
+
+{% block content %}
+
+{% if messages %}
+    <div class="help-text">
+        <ul class="help-text">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<div class="login-div">
+    <form action="" method="post">{% csrf_token %}
+        <table border="0" cellpadding="0" >
+            {{form.as_table}}        
+        </table>
+        <div class="login-footer">
+            <input type="submit" value="登录" class="input-button"/>
+            <a href="/account/register/">注册</a> 
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
