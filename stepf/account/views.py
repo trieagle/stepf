@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib import messages
-from django.contrib.auth import authenticate, login as auth_login ,logout as auth_logout
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
@@ -30,8 +30,8 @@ def reg(request):
             password = form.cleaned_data["password"]
             user_obj = User.objects.create_user(username,email,password)
             user_obj.save()
-	    account = Account(user = user_obj)
-	    account.save()		
+            account = Account(user = user_obj)
+            account.save()		
             _login(request,username,password) #注册完毕 直接登陆
             return HttpResponseRedirect("/account/index/")    
     print 'register 2'
