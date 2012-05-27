@@ -17,9 +17,8 @@ def index(request):
     	return home(request)  
     return login(request) 
 
-def reg(request):
+def register(request):
     '''注册视图'''
-    print 'register 1'
     template_var = {}
     form = RegisterForm()    
     if request.method == "POST":
@@ -34,14 +33,12 @@ def reg(request):
             account.save()		
             _login(request,username,password) #注册完毕 直接登陆
             return HttpResponseRedirect("/account/index/")    
-    print 'register 2'
     template_var["form"] = form
     return render_to_response("account/register.html",template_var,context_instance=RequestContext(request))
     
 def login(request):
     '''登陆视图'''
     template_var={}
-    print 'login 1'
     form = LoginForm()    
     if request.method == 'POST':
         form=LoginForm(request.POST.copy())
@@ -95,4 +92,3 @@ def userinfo(request):
     template_var["home_page"] = False
     return render_to_response("account/userinfo.html",template_var,context_instance=RequestContext(request))
         
-    
