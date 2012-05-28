@@ -1,6 +1,5 @@
 from django.db import models
 from stepf.account import models as account_models
-
 import datetime
 
 class Task(models.Model):
@@ -38,14 +37,15 @@ class Task(models.Model):
         
         if stp == 1 and self.curr_step < self.nstep:
             self.curr_step += 1
-
-
-
-
-        if (stp == 1 and stepself.curr_step < self.nstep) or \
-            (stp == -1 and stepself.curr_step > 0):
-            self.curr_step += stp
-            self._update_time()
+            msg, created = self.message_set.get_or_create(
+                step_id=self.curr_step)
+            if not created:
+                msg.content = ""
+            # CHECK is msg's foreign key setted to self?
+            msg.save()
+        elif stp == -1 and stepself.curr_step > 0:
+            self.curr_step -= 1
+        self._update_time()
 
     # override
     def delete(self, *args, **kwargs):

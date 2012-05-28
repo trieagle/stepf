@@ -36,7 +36,7 @@ def remove_task(request):
     rm_task = _fetch_task_or_ajax_error(request)
     try:
         task = Task.objects.get(id=rm_task['id'])
-        #FIXME ignore race condition
+        #FIXME RACE
         task.delete()
     except Task.DoesNotExist:
         return HttpResponse(simplejson.dumps(False), _minetype)
@@ -48,7 +48,7 @@ def update_step(request):
     stp_task = _fetch_task_or_ajax_error(request)
     try:
         task = Task.objects.get(id=stp_task['id'])
-        #FIXME ignore race condition
+        #FIXME RACE
         task.update_step(stp_task['step'])
         task.save()
 
@@ -61,7 +61,7 @@ def update_title(request):
     tit_task = _fetch_task_or_ajax_error(request)
     try:
         task = Task.objects.get(id=tit_task['id'])
-        #FIXME ignore race condition
+        #FIXME RACE
         task.title = tit_task['title']
         task.save()
     except Task.DoesNotExist:
@@ -74,7 +74,7 @@ def update_message(request):
     try:
         message = Message.objects.get(id=request_message['id'])
         message.content = request_message['content']
-        #FIXME ignore race condition
+        #FIXME RACE
         message.save()
     except Message.DoesNotExist:
         return HttpResponse(simplejson.dump(False), _minetype)
