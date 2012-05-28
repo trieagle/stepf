@@ -5,5 +5,6 @@ urlpatterns = patterns(
     #url(r'$', 'index'), bug!
     url(r'register/$', 'register'),
     url(r'login/$', 'login'),
-    url(r'foo/$', 'foo'),
+    url(r'index/$', 'index'),
+    url(r'','index'),
 )

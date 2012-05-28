@@ -8,4 +8,6 @@ import datetime
 import calendar
 
 def home(request):
-    return HttpResponse('this is in home')
+    if request.user.is_authenticated():
+        return HttpResponse('this is in home')
+    return HttpResponseRedirect('/account/index/')

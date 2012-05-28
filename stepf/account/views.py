@@ -28,7 +28,6 @@ def register(request):
             email = form.cleaned_data["email"]
             password = form.cleaned_data["password"]
             user_obj = User.objects.create_user(username,email,password)
-            user_obj.save()
             account = Account(user = user_obj)
             account.save()		
             _login(request,username,password) #注册完毕 直接登陆
