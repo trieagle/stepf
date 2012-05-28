@@ -34,17 +34,23 @@ class Task(models.Model):
     def _update_time(self):
         task.update_time = datetime.datetime.now()
 
+    def update_step(self, stp):
+        
+        if stp == 1 and self.curr_step < self.nstep:
+            self.curr_step += 1
 
 
-    def do_step(self, stp):
+
 
         if (stp == 1 and stepself.curr_step < self.nstep) or \
             (stp == -1 and stepself.curr_step > 0):
             self.curr_step += stp
             self._update_time()
 
-    def remove_self(self):
+    # override
+    def delete(self, *args, **kwargs):
         self.alive = 0
+        self.save()
 
     
 class Message(models.Model):
