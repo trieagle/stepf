@@ -28,8 +28,8 @@ def create_task(request):
         owner=_get_account(request.user),
         nstep=new_task['nstep'],
         frequence=new_task['frequence'])
-
-    return HttpResponse(simplejson.dumps(True), _minetype)
+    respones = serializers.serialize('json', task)
+    return HttpResponse(respones, _minetype)
 
 
 def remove_task(request):
