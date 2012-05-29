@@ -15,5 +15,9 @@ class Note(models.Model):
 
     create_time = models.DateTimeField(default=datetime.datetime.now)
 
+    # override
+    def delete(self, *args, **kwargs):
+        self.alive = 0
+        self.save()
 
     #picture
