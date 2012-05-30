@@ -12,10 +12,6 @@ from forms import RegisterForm, LoginForm, UserForm
 from stepf.views import home
 import re
  
-def index(request):
-    if request.user.is_authenticated():
-    	return home(request)  
-    return login(request) 
 
 def register(request):
     '''注册视图'''
@@ -31,7 +27,7 @@ def register(request):
             account = Account(user = user_obj)
             account.save()		
             _login(request,username,password) #注册完毕 直接登陆
-            return HttpResponseRedirect("/account/index/")    
+            return HttpResponseRedirect("/")    
     template_var["form"] = form
     return render_to_response("account/register.html",template_var,context_instance=RequestContext(request))
     
@@ -43,7 +39,7 @@ def login(request):
         form=LoginForm(request.POST.copy())
         if form.is_valid():
             _login(request,form.cleaned_data["username"],form.cleaned_data["password"])
-            return HttpResponseRedirect("/account/index/")
+            return HttpResponseRedirect("/")
     template_var["form"]=form
     return render_to_response("account/login.html",template_var,context_instance=RequestContext(request))
     
@@ -88,6 +84,5 @@ def userinfo(request):
         form = UserForm( initial = {'username':request.user.username ,'email':request.user.email})
 
     template_var["form"] = form
-    template_var["home_page"] = False
     return render_to_response("account/userinfo.html",template_var,context_instance=RequestContext(request))
         

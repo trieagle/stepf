@@ -1,0 +1,39 @@
+{% extends "main/base.html" %}
+
+
+{% block title%}
+{% endblock%}
+
+{% block extra_scripts %}
+{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block mainpart %}
+<div id="box" class="clearfix">
+
+    <div id="top-box" class = "">
+        {% include "main/create.html" %}
+    </div>
+
+    <div id="left-box" class="left-box box-container grid_7 clearfix">
+        <h2>Contious Tasks</h2>
+        {% include "main/task/task_list.html" %}
+    </div>
+
+    <div id="right-box" class="right-box box-container grid_5 clearfix">
+
+        <div id="note-box" class="clearfix">
+            <h2>Fast Note</h2>
+            {% include "main/note/note.html" %}
+        </div>
+
+        <div id="reminder-box" class="clearfix">
+            <h2>Reminder</h2>
+            {% include "main/reminder/reminder.html" %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}

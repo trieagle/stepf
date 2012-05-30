@@ -1,0 +1,53 @@
+﻿<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% block title%}{% endblock%}
+        </title>
+        <link rel="stylesheet" media="all" charset="utf-8" href="{{STATIC_URL}}css/base.css"/>
+        {% block extra_css %}{% endblock %}
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        {% csrf_token %}
+        <div id="wrapper">
+            <div id="header" class="clearfix">
+                <div id="logo" >
+                    <a href="/account/index/">our logo</a>
+                </div>
+                <div id="menu" class="menubar clearfix">
+                    <ul class="header-navigation">
+                        <li>
+                        <a class="first" href="/account/userinfo/">user:{{user.username}}</a>
+                        </li>
+                        <li>
+                        <a href="/account/logout/">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="main" class="main clearfix">
+                    {% block mainpart %}
+                    {% endblock %}
+            </div>
+
+            <div id="footer">
+                <ul class="footer-navigation">
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/faq/">FAQ</a></li>
+                    <li><a href="/legal/">Legal</a></li>
+                    <li><a href="#">{% now "Y" %} Stepf | stepf.net</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/ajax_csrf.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/base.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/jquery.editable-1.3.3.js"></script>
+        {% block extra_scripts %}{% endblock %}
+    </body>
+</html>
