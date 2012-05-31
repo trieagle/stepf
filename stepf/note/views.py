@@ -34,7 +34,7 @@ def remove_note(request):
         note = Note.objects.get(id=rm_note['id'])
         #FIXME RACE
         note.delete()
-    except note.DoesNotExist:
+    except Note.DoesNotExist:
         return HttpResponse(simplejson.dumps(False), _mimetype)
 
     return HttpResponse(simplejson.dumps(True), _mimetype)
@@ -47,7 +47,7 @@ def done_note(request):
         #FIXME RACE
         note.done = 1
         note.save()
-    except note.DoesNotExist:
+    except Note.DoesNotExist:
         return HttpResponse(simplejson.dumps(False), _mimetype)
 
     return HttpResponse(simplejson.dumps(True), _mimetype)

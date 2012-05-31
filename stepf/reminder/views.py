@@ -40,7 +40,7 @@ def remove_reminder(request):
         reminder = Reminder.objects.get(id=rm_reminder['id'])
         #FIXME RACE
         reminder.delete()
-    except reminder.DoesNotExist:
+    except Reminder.DoesNotExist:
         return HttpResponse(simplejson.dumps(False), _mimetype)
 
     return HttpResponse(simplejson.dumps(True), _mimetype)
@@ -53,7 +53,7 @@ def done_reminder(request):
         #FIXME RACE
         reminder.done = 1
         reminder.save()
-    except reminder.DoesNotExist:
+    except Reminder.DoesNotExist:
         return HttpResponse(simplejson.dumps(False), _mimetype)
 
     return HttpResponse(simplejson.dumps(True), _mimetype)

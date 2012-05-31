@@ -1,8 +1,10 @@
 from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns(
-    'stepf.reminder.views',
-    url(r'create_reminder/$', 'create_reminder'),
-    url(r'remove_reminder/$', 'remove_reminder'),
-    url(r'done_reminder/$', 'done_reminder'),
+    'stepf.task.views',
+    url(r'create_task/$', 'create_task'),
+    url(r'remove_task/$', 'remove_task'),
+    url(r'update_step/$', 'update_step'),
+    url(r'update_title/$', 'update_title'),
+    url(r'update_message/$', 'update_message'),
 )
