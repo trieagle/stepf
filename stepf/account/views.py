@@ -45,13 +45,12 @@ def login(request):
             context_instance=RequestContext(request))
 
 def _login(request, name, password):
-    ret = False
-    #正则表达式匹配，用邮箱取得用户名
+    ## check if name is email
     if re.match('^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$', name):
         try:
             temp = User.objects.get(email=name)
         except (User.MultipleObjectsReturned, User.DoesNotExist):
-            messages.add_message(request, messages.INFO, _(u'用户不存在'))
+            messages.add_message(request, messages.INFO, 'user not exist')
             return False
         else:
             name = temp.username
@@ -59,12 +58,12 @@ def _login(request, name, password):
     if user:
         if user.is_active:
             auth_login(request, user)
-            ret = True
+            return True
         else:
-            messages.add_message(request, messages.INFO, _(u'用户没有激活'))
+            messages.add_message(request, messages.INFO, 'user not activated or destroyed')
     else:
-        messages.add_message(request, messages.INFO, _(u'用户不存在或密码错误'))
-    return ret
+        messages.add_message(request, messages.INFO, 'user not exist or pwd is wrong')
+    return False
 
 def logout(request):
     auth_logout(request)
@@ -76,8 +75,8 @@ def userinfo(request):
     if request.method ==  'POST':
         form = UserForm(request.POST.copy())
         if form.is_valid():
-            User.objects.filter( id = request.user.id ).update( username = form.cleaned_data["username"],
-                                                            email = form.cleaned_data["email"])
+            User.objects.filter(id=request.user.id).update(username=form.cleaned_data["username"],
+                                                            email=form.cleaned_data["email"])
     else :
         form = UserForm( initial = {'username':request.user.username, 'email':request.user.email})
     template_var["form"] = form
