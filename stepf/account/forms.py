@@ -3,6 +3,7 @@ from django import forms
 from django.contrib.auth import models as auth_models
 from stepf.account.models import Account 
 from django.utils.translation import ugettext_lazy as _
+import re
 
 class RegisterForm(forms.Form):
     email=forms.EmailField(label=_(u"邮件"),max_length=30,widget=forms.TextInput(attrs={'size': 30,}))    
@@ -17,7 +18,7 @@ class RegisterForm(forms.Form):
         raise forms.ValidationError(_(u"该昵称已经被使用请使用其他的昵称"))
         
     def clean_email(self):
-        '''验证重复email'''
+        #验证重复email
         emails = auth_models.User.objects.filter(email__iexact=self.cleaned_data["email"])
         if not emails:
             return self.cleaned_data["email"]
