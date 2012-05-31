@@ -9,6 +9,8 @@ urlpatterns = patterns('',
     #url(r'^account/register','stepf.account.views.register'),
     url(r'^account/', include('stepf.account.urls')),
     url(r'^task/', include('stepf.task.urls')),
+    url(r'^note/', include('stepf.note.urls')),
+    url(r'^reminder/', include('stepf.reminder.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
