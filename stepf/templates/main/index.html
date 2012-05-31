@@ -1,39 +1,58 @@
-{% extends "main/base.html" %}
+{% extends "base.html" %}
 
+{% block title%}MainBoard{% endblock%}
 
-{% block title%}
-{% endblock%}
+{% block body %}        
+<div id="wrapper" class="container_12">
 
-{% block extra_scripts %}
-{% endblock %}
-
-{% block extra_css %}
-{% endblock %}
-
-{% block mainpart %}
-<div id="box" class="clearfix">
-
-    <div id="top-box" class = "">
-        {% include "main/create.html" %}
+    <div id="header" class="grid_12 clearfix">
+        <div id="logo" >
+            <a href="/account/index/">StepForward(Logo)</a>
+        </div>
+        <div id="menu" class="menubar clearfix">
+            <ul class="header-navigation">
+                <li><a class="first" href="/account/userinfo/">user:{{user.username}}</a>
+                </li>
+                <li><a href="/account/logout/">Logout</a>
+                </li>
+            </ul>
+        </div>
     </div>
 
-    <div id="left-box" class="left-box box-container grid_7 clearfix">
-        <h2>Contious Tasks</h2>
-        {% include "main/task/task_list.html" %}
+    <div id="main" class="main box grid_12 clearfix">
+
+            <div id="top-box" class="top-box create-box grid_12 clearfix">
+                <h2>Creation</h2>
+                {% include "main/create.html" %}
+            </div>
+
+            <div id="left-box" class="left-box task-box grid_6 clearfix">
+                <h2>Contious Tasks</h2>
+                {% include "main/task/task_list.html" %}
+            </div>
+
+            <div id="right-box" class="right-box grid_5 clearfix">
+
+                <div id="note-box" class="note-box grid_5 clearfix">
+                    <h2>Fast Note</h2>
+                    {% include "main/note/note.html" %}
+                </div>
+
+                <div id="reminder-box" class="reminder-box grid_5 clearfix">
+                    <h2>Reminder</h2>
+                    {% include "main/reminder/reminder.html" %}
+                </div>
+
+            </div>
     </div>
 
-    <div id="right-box" class="right-box box-container grid_5 clearfix">
-
-        <div id="note-box" class="clearfix">
-            <h2>Fast Note</h2>
-            {% include "main/note/note.html" %}
-        </div>
-
-        <div id="reminder-box" class="clearfix">
-            <h2>Reminder</h2>
-            {% include "main/reminder/reminder.html" %}
-        </div>
-
+    <div id="footer" class="grid_12 clearfix">
+        <ul class="footer-navigation">
+            <li><a href="/about/">About</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+            <li><a href="/legal/">Legal</a></li>
+            <li><a href="#">{% now "Y" %} Stepf | stepf.net</a></li>
+        </ul>
     </div>
 </div>
 {% endblock %}
