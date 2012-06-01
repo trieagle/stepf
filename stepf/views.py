@@ -12,6 +12,7 @@ def home(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/account/index/')
 
+    account = Account.objects.get(user=request.user) 
     return render_to_response("main/index.html",
-                              {"user": request.user},
+                              {"username": account.user.username},
                               context_instance=RequestContext(request))

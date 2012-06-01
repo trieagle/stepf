@@ -1,9 +1,9 @@
 ﻿
-{% extends "account/abase.html" %}
+{% extends "base.html" %}
 
 {% block title%}Account Register{% endblock%}
 
-{% block content %}
+{% block body %}
 
 {% if messages %}
     <div class="help-text">
@@ -17,7 +17,7 @@
 
 <div class="register-div">
     <form action="" method="post">{% csrf_token %}
-        <table border="0" cellpadding="0" >
+        <table border="1px" cellpadding="0" >
             {{form.as_table}}        
         </table>
         <div class="register-footer">
