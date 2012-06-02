@@ -1,0 +1,15 @@
+<div class="task-bar clearfix">
+    <input type="checkbox" name="vehicle" value="Bike" /> 
+    <a href="#">==》</a>
+    <a href="#">《==</a>
+    <a href="#">X</a>
+</div>
+<div class="task-list clearfix">
+    <span>task-list</span>
+    <ul class="task-list clearfix">
+    {% include "main/task/task_item.html" %}
+    {% for atask in tasks%}
+    {% include "main/task/task_item.html" %}
+    {% endfor %}
+    </ul>
+</div>
