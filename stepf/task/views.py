@@ -59,7 +59,8 @@ def update_step(request):
     try:
         task = Task.objects.get(id=stp_task['id'])
         #FIXME RACE
-        task.update_step(stp_task['step'])
+        if not task.update_step(stp_task['step']):
+            return HttpResponse(simplejson.dumps(False), _mimetype)
         task.save()
 
     except Task.DoesNotExist:

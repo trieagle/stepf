@@ -43,9 +43,13 @@ class Task(models.Model):
                 msg.content = ""
             # CHECK is msg's foreign key setted to self?
             msg.save()
+            self._update_time()
+            return True
         elif stp == -1 and self.curr_step > 0:
             self.curr_step -= 1
-        self._update_time()
+            self._update_time()
+            return True
+        return False
 
     # override
     def delete(self, *args, **kwargs):

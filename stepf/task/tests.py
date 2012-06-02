@@ -66,6 +66,19 @@ class SimpleTest(TestCase):
         self.assertTrue(Task.objects.get(pk=task.pk).alive == 0,
                         "REMOVE FAILED")
 
+    def test_view_remove_invalid_task(self):
+        """
+        test view function remove_task with an invalid task id
+        """
+
+        rm_task_id = json.dumps({'id': 100})
+        response = self.client.post('/task/remove_task/',
+                                    rm_task_id,
+                                    'test/json',
+                                    HTTP_X_REQUESTED_WITH='XMLHttpRequest',
+                                    follow=True)
+        print response
+
     def test_view_update_step_forward(self):
         """
         test view function update_step with arg 1
@@ -82,6 +95,19 @@ class SimpleTest(TestCase):
         print response
         self.assertTrue(Task.objects.get(pk=task.pk).curr_step == old_step + 1,
                         "Step +1 FAILD")
+
+    def test_view_update_invalid_step_forward(self):
+        """
+        test view function update_step +1 with invalid id
+        """
+        stp_task = json.dumps({'id': 100,
+                               'step': 1})
+        response = self.client.post('/task/update_step/',
+                                    stp_task,
+                                    'test/json',
+                                    HTTP_X_REQUESTED_WITH='XMLHttpRequest',
+                                    follow=True)
+        print response
 
     def test_view_update_step_backward(self):
         """
@@ -103,6 +129,25 @@ class SimpleTest(TestCase):
         self.assertTrue(Task.objects.get(pk=task.pk).curr_step == old_step - 1,
                         "Step -1 FAILD")
 
+    def test_view_update_step_with_invalid_arg(self):
+        """
+        test view function update_step with big arg
+        """
+        task = self.create_task()
+        task.update_step(1)
+        task.save()
+        old_step = task.curr_step
+        stp_task = json.dumps({'id': task.pk,
+                               'step': 10})
+        response = self.client.post('/task/update_step/',
+                                    stp_task,
+                                    'test/json',
+                                    HTTP_X_REQUESTED_WITH='XMLHttpRequest',
+                                    follow=True)
+        print response
+        self.assertTrue(task.curr_step == Task.objects.get(pk=task.pk).curr_step,
+                        "Update Step With Invalid Arg")
+
     def test_view_update_title(self):
         """
         test view function update_title
@@ -116,11 +161,11 @@ class SimpleTest(TestCase):
                                     req_title,
                                     'test/json',
                                     HTTP_X_REQUESTED_WITH='XMLHttpRequest',
-                                    follow=True) 
+                                    follow=True)
 
         self.assertTrue(Task.objects.get(pk=task.pk).title == 'A NEW TITLE',
                         "Task Title Doesn't Match!!!")
- 
+
     def test_view_update_message(self):
         """
         test view function update_message
@@ -139,7 +184,7 @@ class SimpleTest(TestCase):
                                     req_msg,
                                     'test/json',
                                     HTTP_X_REQUESTED_WITH='XMLHttpRequest',
-                                    follow=True) 
+                                    follow=True)
         print response
         self.assertTrue(task.message_set.get(pk=msg.pk).content == "HELLO WORLD",
                         "Message Content Doesn't Match!!!")
