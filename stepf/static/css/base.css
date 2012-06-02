@@ -1,2 +1,23 @@
-@charset "utf-8";
-.clearfix { border:1px dashed gray}
+.menubar{
+    float:right;
+}
+
+ul {
+    list-style-type:none;
+    text-align:center;
+}
+
+ul li {
+    display:inline;
+    border:1px dashed black;
+}
+
+
+.clearfix{
+    /*
+     real func implemented in 960.css
+     */
+    border:1px dashed gray;
+    margin:3px;
+    padding:4px;
+}
