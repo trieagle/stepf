@@ -9,7 +9,14 @@ from stepf.reminder.models import Reminder
 import datetime
 import time
 
+
 _mimetype = 'application/javascript, charset=utf8'
+
+_DEBUG = True
+
+if _DEBUG:
+    import pdb
+    from stepf.debug_tool import *
 
 
 def _get_account(user):
@@ -19,6 +26,8 @@ def _get_account(user):
 def _fetch_reminder_or_ajax_error(request):
     if not request.is_ajax():
         return HttpResponse('ERROR:NOT AJAX REQUEST')
+    if _DEBUG:
+        print simplejson.loads(request.raw_post_data)
     return simplejson.loads(request.raw_post_data)
 
 
@@ -34,6 +43,7 @@ def create_reminder(request):
     return HttpResponse(respones, _mimetype)
 
 
+@debug_in_out
 def remove_reminder(request):
     rm_reminder = _fetch_reminder_or_ajax_error(request)
     try:
@@ -46,6 +56,7 @@ def remove_reminder(request):
     return HttpResponse(simplejson.dumps(True), _mimetype)
 
 
+@debug_in_out
 def done_reminder(request):
     dn_reminder = _fetch_reminder_or_ajax_error(request)
     try:

@@ -1,16 +1,16 @@
 $(document).ready(function () {
-  $('.delete-note').each(function () {
+  $('.delete-reminder').each(function () {
     $(this).click(function () {
-      var id_string = $(this).attr('id').replace('delete-note-', '');
+      var id_string = $(this).attr('id').replace('delete-reminder-', '');
       var post_data = {'id': parseInt(id_string, 10)};
       $.ajax({
-        url: '/note/remove_note/',
+        url: '/reminder/remove_reminder/',
         type: 'post',
         dataType: 'json',
         data: JSON.stringify(post_data),
         success: function (removed) {
           if (removed) {
-            $('#note-' + id_string).remove();
+            $('#reminder-' + id_string).remove();
           }
         }
       });
@@ -18,18 +18,18 @@ $(document).ready(function () {
     });
   });
 
-  $('.done-note').each(function () {
+  $('.done-reminder').each(function () {
     $(this).click(function () {
-      var id_string = $(this).attr('id').replace('done-note-', '');
+      var id_string = $(this).attr('id').replace('done-reminder-', '');
       var post_data = {'id': parseInt(id_string, 10)};
       $.ajax({
-        url: '/note/done_note/',
+        url: '/reminder/done_reminder/',
         type: 'post',
         dataType: 'json',
         data: JSON.stringify(post_data),
         success: function (done) {
           if (done) {
-            $('#note-' + id_string).remove();
+            $('#reminder-' + id_string).remove();
           }
         }
       });

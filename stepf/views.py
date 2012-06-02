@@ -16,14 +16,22 @@ def home(request):
     
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/account/index/')
+
+    #FIXME should select undone task
     task_list = Task.objects.filter(
-        owner=Account.get_account(request.user))
+        owner=Account.get_account(request.user),
+        alive=1)
+
 
     note_list = Note.objects.filter(
-        owner=Account.get_account(request.user))
+        owner=Account.get_account(request.user),
+        alive=1,
+        done=0)
 
     reminder_list = Reminder.objects.filter(
-        owner=Account.get_account(request.user))
+        owner=Account.get_account(request.user),
+        alive=1,
+        done=0)
     if _DEBUG:
         print task_list
         print note_list
