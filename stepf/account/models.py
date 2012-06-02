@@ -23,4 +23,6 @@ class Account(models.Model):
     class Meta:
         ordering = ['user']
 
-# Create your models here.
+    @staticmethod
+    def get_account(user):
+        return Account.objects.get(user=user)
