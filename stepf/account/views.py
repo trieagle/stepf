@@ -24,6 +24,9 @@ def register(request):
             account.save()
             _login(request, username, password)  #注册完毕 直接登陆
             return HttpResponseRedirect("/")
+        else:
+            messages.add_message(request, messages.INFO, 'something is wrong')
+            
     template_var["form"] = form
     return render_to_response("account/register.html",
             template_var,
