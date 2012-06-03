@@ -1,8 +1,13 @@
-<li>
+{% load common_filters %}
+<li id={{ areminder.pk|add_prefix:"reminder-"}}>
+<div>
 <p>{{ areminder.title }}</p> 
-<a id="delete-reminder-" href="#" class title="remove this reminder">delete</a>
+<a class="delete-reminder" id={{ areminder.pk|add_prefix:"delete-reminder-"}} href="" class title="remove this reminder">delete</a>
 <span class="lsep">|</span>
-<a id="done-reminder-" href="#" class title="done this reminder">done</a>
+<a class="done-reminder" id={{ areminder.pk|add_prefix:"done-reminder-"}} href="" class title="done this reminder">done</a>
+</div>
+<div>
 <label>Time:<label>
 <p>{{ areminder.alarm_time }}</p>
+</div>
 </li>

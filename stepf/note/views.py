@@ -6,7 +6,14 @@ from django.core import serializers
 from stepf.account.models import Account
 from stepf.note.models import Note
 
+
 _mimetype = 'application/javascript, charset=utf8'
+
+_DEBUG = True
+
+if _DEBUG:
+    import pdb
+    from stepf.debug_tool import *
 
 
 def _get_account(user):
@@ -16,9 +23,12 @@ def _get_account(user):
 def _fetch_note_or_ajax_error(request):
     if not request.is_ajax():
         return HttpResponse('ERROR:NOT AJAX REQUEST')
+    if _DEBUG:
+        print simplejson.loads(request.raw_post_data)
     return simplejson.loads(request.raw_post_data)
 
 
+@debug_in_out
 def create_note(request):
     new_note = _fetch_note_or_ajax_error(request)
     note = Note.objects.create(
@@ -27,7 +37,7 @@ def create_note(request):
     respones = serializers.serialize('json', [note])
     return HttpResponse(respones, _mimetype)
 
-
+@debug_in_out
 def remove_note(request):
     rm_note = _fetch_note_or_ajax_error(request)
     try:
@@ -39,7 +49,7 @@ def remove_note(request):
 
     return HttpResponse(simplejson.dumps(True), _mimetype)
 
-
+@debug_in_out
 def done_note(request):
     dn_note = _fetch_note_or_ajax_error(request)
     try:

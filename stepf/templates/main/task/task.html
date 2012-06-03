@@ -6,7 +6,7 @@
 </div>
 <div class="task-list clearfix">
     <span>Task List</span>
-    <ul class="task-list clearfix">
+    <ul id="task-list" class="task-list clearfix">
     {% for atask in task %}
         {% include "main/task/task_item.html" %}
     {% endfor %}
