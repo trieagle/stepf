@@ -1,3 +1,42 @@
+@charset "utf-8";
+
+/* RESETS */
+* { 
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+html {
+    overflow-y:scroll;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, 'Hiragino Sans GB', sans-serif;
+    color: #555;
+    background: url(../img/body.png)
+}
+
+a {
+    padding:9px 10px 8px;
+    color:#333;
+    font-size:15px;
+    line-height:20px;
+    text-decoration:none; 
+}
+
+a:hover {
+    text-shadow:1px 1px #6a8c1a;
+    text-decoration:none;
+}
+
+
+/* mine */
+
+ul {
+    list-style:none;
+}
+
 .menubar{
     float:right;
 }
@@ -10,6 +49,11 @@ ul {
 ul li {
     display:inline;
     border:1px dashed black;
+}
+
+/* minimum hight */
+#wrapper #main {
+    min-height:550px;
 }
 
 

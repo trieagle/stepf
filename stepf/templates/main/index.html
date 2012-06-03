@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
-{% block title%}MainBoard{% endblock%}
+{% block title %}MainBoard{% endblock%}
+{% block extra_css %}
+    <link rel="stylesheet" media="all" charset="utf-8" href="{{STATIC_URL}}css/task.css"/>
+    <link rel="stylesheet" media="all" charset="utf-8" href="{{STATIC_URL}}css/note.css"/>
+    <link rel="stylesheet" media="all" charset="utf-8" href="{{STATIC_URL}}css/reminde.css"/>
+{% endblock%}
 
 {% block body %}        
 <div id="wrapper" class="container_12 clearfix">

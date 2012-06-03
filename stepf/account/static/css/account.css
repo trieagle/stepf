@@ -1,0 +1,79 @@
+@charset "utf-8";
+
+#wrapper .account-main {
+    padding:115px 00px 50px 0;
+    min-height:300px !important;
+}
+
+
+.warning {
+    position:absolute;
+    color:Darkorange;
+    font-weight:bold;
+    font-size:25px;
+    padding:3px;
+}
+
+.help-msg {
+    padding:5px;
+    width:300px;
+    margin:auto;
+    background: #FFEBE8 none repeat scroll 0;
+    border: 1px solid #DD3C10;
+}
+/* login part*/
+.login-box {
+
+}
+
+/* centering the form */
+.login-form , .register-form {
+    width:380px;
+    height:400px;
+    margin:auto;
+}
+
+.form-body input {
+    padding:2px;
+    border-radius:4px;
+    width:295px;
+    font-size:22px;
+}
+
+.form-title {
+    background-color:#a9e1ff;
+    padding:2px 2px 2px 21px;
+    font-size:30px;
+}
+
+.form-body {
+    padding:38px;
+    background-color:#e9f1f4;
+    overflow:hidden;
+    border-style:solid;
+    font-size:18px;
+}
+
+.form-body p {
+    margin-bottom:0px;
+    margin-top:10px;
+}
+
+.form-footer {
+    text-align:right;
+    background-color:#f9f9f9;
+    padding:12px 12px 18px 12px;
+    border-radius:0 0 6px 6px;
+}
+
+.form-footer .submit-button {
+    font-size:20px;
+    font-weight:bold;
+    padding:5px;
+    color:gray;
+}
+
+.form-footer a {
+    color:gray;
+}
+ 

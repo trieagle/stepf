@@ -1,15 +1,35 @@
-﻿{% extends "base.html" %}
+﻿{% extends "account/abase.html" %}
 
 {% block title%}Account Information{% endblock%}
 
-{% block body %}
-<form action="" method="POST">{% csrf_token %}
-	<table border="0" cellpadding="0" >
-        {{form.as_table}}        
-    </table>
-    <p>
-        <a href="/account/index/">返回</a> <input type="submit" value="保存更改"/>
-    </p>
-</form>
+{% block mainpart %}
+
+<div class="userinfo-box container_12">
+
+    <div class="userinfo-form grid_12">
+    
+        <form action="" method="post">{% csrf_token %}
+
+            <div class="form-main">
+                
+                {% for field in form %}
+                    <p>{{ field.errors }}</p>
+                {% endfor %}
+
+                {% for field in form %}
+                    <p>{{ field.label_tag }}: {{ field }}</p>
+                {% endfor %}
+            
+            </div>
+
+            <div class="form-footer">
+                <input type="submit" value="保存" class="input-button"/>
+                <a href="/account/index">返回</a> 
+            </div>
+
+        </form>
+    </div>
+</div>
+
 {% endblock %}
 

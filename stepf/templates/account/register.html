@@ -1,31 +1,44 @@
 ﻿
-{% extends "base.html" %}
+{% extends "account/abase.html" %}
 
 {% block title%}Account Register{% endblock%}
 
-{% block body %}
+{% block mainpart %}
+<div class="register-box container_12">
+    <div class="register-form">
+    
+        <form action="" method="post">{% csrf_token %}
 
-{% if messages %}
-    <div class="help-text">
-        <ul class="help-text">
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
+            <div class="form-title">
+                <span>Register</span>
+            </div>
+
+            <div class="form-body">
+                {% for msg in messages %}
+                <p class="help-msg">
+                    {{msg}}
+                </p>
+                {% endfor %}
+                {% for field in form %}
+                    <p>
+                    {{ field.label_tag }}
+                    </p>
+                    {{ field }}
+
+                    {% if field.errors %}
+                        <span class="warning">*</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            
+            <div class="form-footer">
+                <input type="submit" value="Register" class="submit-button" />
+                <a href="/account/login/">login here</a>
+            </div>
+
+        </form>
+
     </div>
-{% endif %}
-
-<div class="register-div">
-    <form action="" method="post">{% csrf_token %}
-        <table border="1px" cellpadding="0" >
-            {{form.as_table}}        
-        </table>
-        <div class="register-footer">
-            <input type="submit" value="注册" class="input-button"/>
-            <a href="/account/login/">登录</a>
-        </div>
-    </form>
 </div>
-
 {% endblock %}
 

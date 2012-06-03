@@ -27,9 +27,9 @@ def _email_registered(self):
 
 class RegisterForm(forms.Form):
     '''form for user registeration'''
-    email = forms.EmailField(label="Email", max_length=30, widget=forms.TextInput(attrs={'size': 40,}))
-    password = forms.CharField(label="Password", max_length=30, widget=forms.PasswordInput(attrs={'size': 20,}))
-    username = forms.CharField(label="Nickname", max_length=30, widget=forms.TextInput(attrs={'size': 20,}))
+    email = forms.EmailField(label="Email", max_length=30, widget=forms.TextInput(attrs={'size': 20,'class':'class_email',}))
+    password = forms.CharField(label="Password", max_length=30, widget=forms.PasswordInput(attrs={'size': 20,'class':'class_password',}))
+    username = forms.CharField(label="Nickname", max_length=30, widget=forms.TextInput(attrs={'size': 20,'class':'class_username',}))
     
     def clean_username(self):
         if _username_valid(self):
@@ -46,8 +46,8 @@ class RegisterForm(forms.Form):
         
 class LoginForm(forms.Form):
     '''form for user login'''
-    username=forms.CharField(label="Nickname||Email", max_length=30, widget=forms.TextInput(attrs={'size': 20,}))
-    password=forms.CharField(label="Password",max_length=30,widget=forms.PasswordInput(attrs={'size': 20,}))
+    username=forms.CharField(label="Login or Email", max_length=30, widget=forms.TextInput(attrs={'size': 20,'class':'class_username',}),error_messages={'required': 'Please enter your name'})
+    password=forms.CharField(label="Password",max_length=30,widget=forms.PasswordInput(attrs={'size': 20,'class':'class_password',}),error_messages={'required': 'Please enter your password'})
 
     def clean_username(self):
         '''this can be nikename or email addr, we do not check it here'''
@@ -58,8 +58,8 @@ class LoginForm(forms.Form):
 
 class UserForm(forms.Form):
     '''form to show user info'''
-    username = forms.CharField(label="Nickname", max_length=30, widget=forms.TextInput(attrs={'size': 20,}))
-    email = forms.EmailField(label="Email", max_length=30, widget=forms.TextInput(attrs={'size': 30,}))
+    username = forms.CharField(label="Nickname", max_length=30, widget=forms.TextInput(attrs={'size': 20,'class':'class_username',}))
+    email = forms.EmailField(label="Email", max_length=30, widget=forms.TextInput(attrs={'size': 30,'class':'class_email',}))
     
     def clean_username(self):
         if _username_valid(self):
