@@ -28,6 +28,7 @@ def _fetch_note_or_ajax_error(request):
     return simplejson.loads(request.raw_post_data)
 
 
+@debug_in_out
 def create_note(request):
     new_note = _fetch_note_or_ajax_error(request)
     note = Note.objects.create(

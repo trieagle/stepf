@@ -1,11 +1,12 @@
-<li>
+{% load common_filters %}
+<li id={{ atask.pk|add_prefix:"task-"}}>
 <div>
     <input type="checkbox"></input>
     <a>{{ atask.title }}</a>
     <a href="#">==></a>
 </div>
 <div>
-    <label>{{ atask.curr_step }}, {{ atask.nstep }}</label>
+    <label>{{ atask.curr_step }}/{{ atask.nstep }}</label>
     <label>diary</label>
 </div>
 </li>
