@@ -32,23 +32,36 @@ a:hover {
 
 
 /* mine */
+#wrapper {
+    position:relative;
+}
 
-ul {
-    list-style:none;
+.logo {
+    position:absolute;
+    left:40px;
+    top:20px;
+    height:30px;
 }
 
 .menubar{
-    float:right;
+    float:center;
 }
 
-ul {
-    list-style-type:none;
+#header ul, #footer ul {
     text-align:center;
 }
 
 ul li {
     display:inline;
-    border:1px dashed black;
+}
+
+.header-navigation {
+    font-size:20px;
+    margin:0;
+    padding:14px;
+    overflow:hidden;
+    padding-bottom:0px;
+    border-bottom:1px solid white;
 }
 
 /* minimum hight */
@@ -60,8 +73,8 @@ ul li {
 .clearfix{
     /*
     real func implemented in 960.css
-     */
     border:1px dashed gray;
+     */
     margin:3px;
     padding:4px;
 }

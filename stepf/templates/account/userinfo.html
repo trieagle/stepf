@@ -6,25 +6,35 @@
 
 <div class="userinfo-box container_12">
 
-    <div class="userinfo-form grid_12">
+    <div class="userinfo-form ">
     
         <form action="" method="post">{% csrf_token %}
 
-            <div class="form-main">
-                
-                {% for field in form %}
-                    <p>{{ field.errors }}</p>
-                {% endfor %}
+            <div class="form-title">
+                <span>User info</span>
+            </div>
 
-                {% for field in form %}
-                    <p>{{ field.label_tag }}: {{ field }}</p>
+            <div class="form-body">
+                {% for msg in messages %}
+                <p class="help-msg">
+                    {{msg}}
+                </p>
                 {% endfor %}
-            
+                {% for field in form %}
+                    <p>
+                    {{ field.label_tag }}
+                    </p>
+                    {{ field }}
+
+                    {% if field.errors %}
+                        <span class="warning">*</span>
+                    {% endif %}
+                {% endfor %}
             </div>
 
             <div class="form-footer">
-                <input type="submit" value="保存" class="input-button"/>
-                <a href="/account/index">返回</a> 
+                <input type="submit" value="Save" class="submit-button"/>
+                <a href="/">go back</a> 
             </div>
 
         </form>

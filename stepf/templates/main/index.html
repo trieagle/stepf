@@ -2,6 +2,7 @@
 
 {% block title %}MainBoard{% endblock%}
 {% block extra_css %}
+    <link rel="stylesheet" media="all" charset="utf-8" href="{{STATIC_URL}}css/home.css"/>
     <link rel="stylesheet" media="all" charset="utf-8" href="{{STATIC_URL}}css/task.css"/>
     <link rel="stylesheet" media="all" charset="utf-8" href="{{STATIC_URL}}css/note.css"/>
     <link rel="stylesheet" media="all" charset="utf-8" href="{{STATIC_URL}}css/reminder.css"/>
@@ -11,12 +12,20 @@
 <div id="wrapper" class="container_12 clearfix">
 
     <div id="header" class="grid_12 clearfix">
-        <div id="logo" >
-            <a href="/account/index/">StepForward(Logo)</a>
+        <div id="logo" class="logo clearfix">
+            <a href="/">StepForward(Logo)</a>
         </div>
         <div id="menu" class="menubar clearfix">
             <ul class="header-navigation">
-                <li><a class="first" href="/account/userinfo/">user:{{user.username}}</a>
+                <li><a class="first" href="/">Personal</a>
+                </li>
+                <li><a class="second" href="/">Group</a>
+                </li>
+                <li><a class="third" href="/">Overview</a>
+                </li>
+                <li><a class="forth alarm" href="/">Alarm</a>
+                </li>
+                <li><a class="fifth" href="/account/userinfo/">user:{{user.username}}</a>
                 </li>
                 <li><a href="/account/logout/">Logout</a>
                 </li>
@@ -26,7 +35,7 @@
 
     <div id="main" class="main box grid_12 clearfix">
 
-        <div id="top-box" class="top-box create-box grid_11 clearfix">
+        <div id="top-box" class="top-box create-box grid_12 clearfix">
             <h2>Creation</h2>
             {% include "main/create.html" %}
         </div>
@@ -38,12 +47,12 @@
 
         <div id="right-box" class="right-box grid_5 clearfix">
 
-            <div id="note-box" class="note-box grid_4 clearfix">
+            <div id="note-box" class="note-box grid_5 clearfix">
                 <h2>Fast Note</h2>
                 {% include "main/note/note.html" %}
             </div>
 
-            <div id="reminder-box" class="reminder-box grid_4 clearfix">
+            <div id="reminder-box" class="reminder-box grid_5 clearfix">
                 <h2>Reminder</h2>
                 {% include "main/reminder/reminder.html" %}
             </div>

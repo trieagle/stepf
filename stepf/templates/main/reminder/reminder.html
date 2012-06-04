@@ -1,7 +1,7 @@
-<div class="boxed">This is the reminder part</div>
-<ul id="reminder-list" class="task-list clearfix">
-{% for areminder in reminder %}
-    {% include "main/reminder/reminder_item.html" %}
-{% endfor %}
-</ul>
-
+<div class="boxed">
+    <ul id="reminder-list" class="task-list clearfix">
+    {% for areminder in reminder %}
+        {% include "main/reminder/reminder_item.html" %}
+    {% endfor %}
+    </ul>
+</div>

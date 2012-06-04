@@ -1,13 +1,14 @@
 {% load common_filters %}
-<li id={{ atask.pk|add_prefix:"task-" }} class="task-item">
-<div>
-    <input type="checkbox"></input>
-    <a>{{ atask.title }}</a>
-    <a href="#">==></a>
-</div>
-<div>
-    <label id="curr-step">{{ atask.curr_step }}</label>/
-    <label id="tot-step">{{ atask.nstep }}</label>
-    <label>diary</label>
-</div>
+<li id={{ atask.pk|add_prefix:"task-"}} class="task-item">
+    <div class="title">
+        <input type="checkbox"></input>
+        <a>{{ atask.title }}</a>
+    </div>
+    <div class="operation">
+        <label>{{ atask.curr_step }}/{{ atask.nstep }}</label>
+        <label>diary</label>
+        <a href="#">==></a>
+    </div>
+    <div class="misc-operation">
+    </div>
 </li>

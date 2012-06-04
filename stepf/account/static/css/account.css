@@ -33,6 +33,11 @@
     margin:auto;
 }
 
+.userinfo-form {
+    width:600px;
+    margin:auto;
+}
+
 .form-body input {
     padding:2px;
     border-radius:4px;
