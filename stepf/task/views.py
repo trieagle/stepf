@@ -11,6 +11,9 @@ _mimetype = 'application/javascript, charset=utf8'
 
 _DEBUG = True
 
+if _DEBUG:
+    from stepf.debug_tool import *
+
 
 def _get_account(user):
     return Account.objects.get(user=user)
@@ -42,7 +45,9 @@ def create_task(request):
     return HttpResponse(respones, _mimetype)
 
 
+@debug_in_out
 def remove_task(request):
+    #FIXME check IndexError
     rm_task = _fetch_task_or_ajax_error(request)
     try:
         task = Task.objects.get(id=rm_task['id'])

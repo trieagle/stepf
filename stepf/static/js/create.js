@@ -45,7 +45,7 @@ $(document).ready(function () {
         data: JSON.stringify(post_data),
         success: function (ret_task) {
           var task = ret_task[0];
-          var html_data = '<li id={0}>\
+          var html_data = '<li id={0} class="task-item">\
                            <div>\
                              <input type="checkbox"></input>\
                              <a>{1}</a>\
