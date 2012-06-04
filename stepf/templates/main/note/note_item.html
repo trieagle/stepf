@@ -1,8 +1,12 @@
 {% load common_filters %}
 
 <li id={{ anote.pk|add_prefix:"note-"}}>
-<p>{{ anote.title }}</p> 
-<a class="delete-note" id={{ anote.pk|add_prefix:"delete-note-" }} href="#" class title="remove this note">delete</a>
-<span class="lsep">|</span>
-<a class="done-note" id={{ anote.pk|add_prefix:"done-note-" }} href="#" class title="done this note">done</a>
+    <div class="title">
+        <a href="#">{{ anote.title }}
+        </a>
+    </div>
+    <div class="operation">
+        <a class="delete-note" id={{ anote.pk|add_prefix:"delete-note-" }} href="#" class title="remove this note">delete</a>
+        <a class="done-note" id={{ anote.pk|add_prefix:"done-note-" }} href="#" class title="done this note">done</a>
+    </div>
 </li>

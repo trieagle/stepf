@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+/* temp style*/
+.box, .right-box, .left-box {
+    border:1px dotted white;
+}
+.right-box {
+    padding-left:22px;
+}
+/* end temp style*/
+
+.box {
+    position:relative;
+    margin-left:5px;
+}
+
+.box .right-box {
+    float:right;
+}
+
+.box .right-box .note-box,.box .right-box .reminder-box  {
+    float:right;
+}
+
+.boxed {
+    font-size:18px;
+    padding:3px;
+    border:1px solid white;
+}
+
+.boxed ul {
+}
+
+.boxed li {
+    display:block;
+    margin-left:8px;
+    border-bottom:1px dotted white;
+    padding-top:9px;
+}
+
+.boxed .title {
+    display:inline;
+    width:45px;
+    height:10px;
+    overflow:hidden;
+}
+
+.boxed .operation {
+    float:right;   
+    display:inline;
+    font-size:15px;
+    vertical-align:sub;
+}
+
+.boxed ul :first {
+    border-left:1px solid gray;
+}
+
+.boxed .misc-operation {
+    float:right;
+    font-size:13px;
+}
+
+.create .para {
+    display:inline;
+
+}

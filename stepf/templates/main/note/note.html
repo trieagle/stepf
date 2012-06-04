@@ -1,7 +1,7 @@
-<div class="boxed">This is the note part</div>
-<ul id="note-list" class="note-list clearfix">
-{% for anote in note %}
-    {% include "main/note/note_item.html" %}
-{% endfor %}
-</ul>
-
+<div class="boxed">
+    <ul id="note-list" class="note-list clearfix">
+    {% for anote in note %}
+        {% include "main/note/note_item.html" %}
+    {% endfor %}
+    </ul>
+</div>
