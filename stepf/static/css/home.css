@@ -52,16 +52,18 @@
     vertical-align:sub;
 }
 
-.boxed ul :first {
-    border-left:1px solid gray;
-}
-
 .boxed .misc-operation {
-    float:right;
     font-size:13px;
+    text-align:right;
 }
 
 .create .para {
     display:inline;
 
 }
+
+.task-bar {
+    text-align:right;
+
+}
+
