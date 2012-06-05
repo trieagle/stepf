@@ -1,6 +1,5 @@
 function delete_task_handler() {
   $('.task-item').each(function () {
-    console.log($(this));
     if ($(this).find('input').is(':checked')) {
       var id_string = $(this).attr('id').replace('task-', '');
       var post_data = {'id': parseInt(id_string, 10)};
@@ -22,4 +21,10 @@ function delete_task_handler() {
 
 $(document).ready(function () {
   $('#delete-select-task').click(delete_task_handler);
+  $('#select-all-tasks').click(function () {
+    var status = $(this).is(':checked');
+    $('#task-list input').each(function () {
+      $(this).attr('checked', status);
+    });
+  });
 });
