@@ -46,15 +46,19 @@ $(document).ready(function () {
         success: function (ret_task) {
           var task = ret_task[0];
           var html_data = '<li id={0} class="task-item">\
-                           <div>\
+                           <div class="title">\
                              <input type="checkbox"></input>\
                              <a>{1}</a>\
-                             <a href="#">==></a>\
                            </div>\
-                           <div>\
+                           <div class="operation">\
                               <label>{2}/{3}</label>\
                               <label>diary</label>\
-                           </div></li>';
+                              <a href="#">==></a>\
+                           </div>\
+                           <div>\
+                              <div class="misc-operation">\
+                           </div>\
+                           </li>';
           html_data = html_data.format("task-" + task.pk,
                                        task.fields.title,
                                        task.fields.curr_step,
@@ -76,10 +80,15 @@ $(document).ready(function () {
         success: function (ret_note) {
           var note = ret_note[0];
           var html_data = '<li id={0}>\
-                             <p>{1}</p>\
+                             <div class="title">\
+                                 <a href="#">{1}\
+                                 </a>\
+                             </div>\
+                             <div class="operation">\
                              <a class="delete-note" id={2} href="#" class title="remove this note">delete</a>\
                              <span class="lsep">|</span>\
                              <a class="done-note" id={3} href="#" class title="done this note">done</a>\
+                             </div>\
                           </li>';
           html_data = html_data.format("note-" + note.pk,
                                        note.fields.title,
@@ -105,15 +114,17 @@ $(document).ready(function () {
         success: function (ret_reminder) {
           var reminder = ret_reminder[0];
           var html_data = '<li id={0}>\
-                           <div>\
-                             <p>{1}</p>\
+                           <div class="title">\
+                             <a href="#">{1}</a>\
+                           </div>\
+                           <div class="operation">\
                              <a class="delete-reminder" id={2} href="" class title="remove this reminder">delete</a>\
                              <span class="lsep">|</span>\
                              <a class="done-reminder" id={3} href="" class title="done this reminder">done</a>\
                            </div>\
-                           <div>\
-                           <label>Time:<label>\
-                           <p>{4}</p>\
+                           <div class="misc-operation">\
+                             <label>Time:<label>\
+                             <span>{4}</span>\
                            </div>\
                            </li>';
           html_data = html_data.format("reminder-" + reminder.pk,
