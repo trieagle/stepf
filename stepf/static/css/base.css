@@ -36,13 +36,22 @@ a:hover {
     position:relative;
 }
 
+/*暂时不显示登录界面的logo
+ */
+.account .logo {
+    display:none;
+}
 .logo {
     position:absolute;
-    left:40px;
+    left:30px;
     top:20px;
     height:30px;
 }
-
+.logo a {
+    font-family: "Lucida Console", Courier, monospace;
+    font-family:"New Century Schoolbook", Times, serif ;
+    font-size:28px;
+}
 .menubar{
     float:center;
 }
@@ -62,6 +71,11 @@ ul li {
     overflow:hidden;
     padding-bottom:0px;
     border-bottom:1px solid white;
+}
+
+.userinfo, .logout {
+    float:right;
+    margin-right:10px;
 }
 
 /* minimum hight */
