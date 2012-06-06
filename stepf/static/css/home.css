@@ -56,6 +56,11 @@
     float:right;
 }
 
+.left-box .task-bar {
+    margin-top:-20px;
+    padding-top:0px;
+}
+
 .boxed {
     padding:3px;
     border:1px solid white;
@@ -152,6 +157,13 @@
 	background:url(../img/nav-bg-left.png) no-repeat 0 0;
 }
 
+.task-item div.process li a.step-future {
+    border-bottom:2px solid darkorange;
+}
+.task-item div.process li a.step-past {
+    border-bottom:2px solid darkgreen;
+}
+
 .task-item div.process li a span {
     position:absolute;
 	top:0px;
@@ -162,3 +174,10 @@
 	z-index:100;
 }
 
+.task-item div.process li a:hover, .task-item div.process li a.step-curr {
+    background:url(../img/nav-bg-left.png) no-repeat 0 -32px !important;
+	color:#000000;
+}
+.task-item div.process li a:hover span, .task-item div.process li a.step-curr span {
+    background:url(../img/nav-bg-right.png) no-repeat right bottom !important;
+}
