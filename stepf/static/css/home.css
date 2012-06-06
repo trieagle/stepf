@@ -127,3 +127,38 @@
     top:10px;
     left:0px;
 }
+
+.task-item div.process {
+    margin-bottom:2px;
+    overflow:hidden;
+}
+
+.task-item ul.process-boar {
+    margin:0 auto;
+    list-style:none;
+    list-style-position:inside;
+}
+
+.task-item .process li {
+    float:left;
+    border-bottom:none;
+    font-size:16px;
+    line-height:16px;
+}
+.task-item div.process li a {
+    display:block;
+	position:relative;
+	padding:8px 8px 3px 23px;
+	background:url(../img/nav-bg-left.png) no-repeat 0 0;
+}
+
+.task-item div.process li a span {
+    position:absolute;
+	top:0px;
+	right:-15px;
+	width:15px;
+	height:32px;
+	background:url(../img/nav-bg-right.png) no-repeat top right;
+	z-index:100;
+}
+

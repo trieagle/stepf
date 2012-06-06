@@ -58,6 +58,7 @@ input, select, label, button{
     font-family: "Lucida Console", Courier, monospace;
     font-family:"New Century Schoolbook", Times, serif ;
     font-size:28px;
+    font-style:italic;
 }
 .menubar{
     float:center;

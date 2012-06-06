@@ -11,4 +11,20 @@
     </div>
     <div class="misc-operation">
     </div>
+    <div class="process">
+		<ul class="process-bar">
+        {% for i in atask.nstep|get_range %}
+            {% if i < atask.curr_step %}
+            <li><a href="" class="step{{i}} step-past" >{{i}}<span>&nbsp;</span></a></li>
+            {% endif %}
+            {% if i = atask.curr_step %}
+            <li><a href="" class="step{{i}} step-curr" >{{i}}<span>&nbsp;</span></a></li>
+            {% endif %}
+            {% if i > atask.curr_step %}
+            <li><a href="" class="step{{i}} step-future" >{{i}}<span>&nbsp;</span></a></li>
+            {% endif %}
+        {% endfor %}
+		</ul>
+	</div>
+
 </li>
