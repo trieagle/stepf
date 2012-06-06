@@ -33,7 +33,7 @@ def _fetch_reminder_or_ajax_error(request):
 
 def create_reminder(request):
     new_reminder = _fetch_reminder_or_ajax_error(request)
-    strp_time = time.strptime(new_reminder['alarm_time'], "%Y/%m/%d %H:%M")
+    strp_time = time.strptime(new_reminder['alarm_time'], "%m/%d/%Y %H:%M")
     inner_time = datetime.datetime.fromtimestamp(time.mktime(strp_time))
     reminder = Reminder.objects.create(
         title=new_reminder['title'],

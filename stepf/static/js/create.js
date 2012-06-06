@@ -104,7 +104,7 @@ $(document).ready(function () {
     function create_reminder() {
       var post_data = {
         title: $('#title-input').val(),
-        alarm_time: '2012/6/10 10:10' //FIXME
+        alarm_time: $('#alarm-time-input').val()
       };
       $.ajax({
         url: '/reminder/create_reminder/',
@@ -131,7 +131,7 @@ $(document).ready(function () {
                                        reminder.fields.title,
                                        "delete-reminder-" + reminder.pk,
                                        "done-reminder-" + reminder.pk,
-                                       reminder.fields.alarm_time);
+                                       post_data.alarm_time);
           $('#reminder-list').append(html_data);
           $('#delete-reminder-' + reminder.pk).click(delete_reminder_handler);
           $('#done-reminder-' + reminder.pk).click(done_reminder_handler);

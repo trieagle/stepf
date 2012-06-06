@@ -6,9 +6,12 @@
             {% block title%}{% endblock%}
         </title>
         <link rel="stylesheet" media="all" charset="utf-8" href="{{STATIC_URL}}css/base.css"/>
+        <link rel="stylesheet" href="{{STATIC_URL}}css/ui-lightness/jquery-ui-1.8.16.custom.css" />
         <link rel="stylesheet" href="{{STATIC_URL}}css/960grid/reset.css" />
         <link rel="stylesheet" href="{{STATIC_URL}}css/960grid/text.css" />
         <link rel="stylesheet" href="{{STATIC_URL}}css/960grid/960.css" />
+        <link rel="stylesheet" href="{{STATIC_URL}}css/jquery-ui-timepicker-addon.css" />
+
         {% block extra_css %}{% endblock %}
         {% block head %}{% endblock %}
     </head>
