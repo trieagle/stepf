@@ -1,22 +1,28 @@
 <div class="create grid_10 clearfix">
-        <select id="create-type" class="create-type para">
+
+    <select id="create-type" class="type-select para">
         <option value="task">Task</option>
         <option value="note">Note</option>
         <option value="reminder">Reminder</option>
     </select>
 
-    <input id="title-input" class="input" value=""></input>
+    <input id="title-input" class="title-input" value=""></input>
+
     <div id="step" class="step para">
         <label>Step</label>
-        <input type="number" id="step-input" min="1" max="100" />
+        <input type="number" id="step-input" class="step-input" min="1" max="100" />
     </div>
+
     <div id="alarm-time" class="alarm-time para">
         <label>Time</label>
         <input type="text" id="alarm-time-input" value=""/>
     </div>
+
     <div id="frequence" class="frequence para">
         <label>Frequence</label>
-        <input type="number" id="freq-input" min="1" max="7" />
+        <input type="number" id="freq-input" class="freq-input" min="1" max="7" />
     </div>
-        <button id="create-confirm">Create</button>
+
+    <button id="create-confirm" class="create-button">Create</button>
+
 </div>

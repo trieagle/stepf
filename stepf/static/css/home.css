@@ -14,16 +14,49 @@
     margin-left:5px;
 }
 
-.box .right-box {
+.top-box .create {
+    border:1px dotted white;
+    margin-top:-20px;
+    padding:20px;
+}
+
+.top-box .type-select {
+    border:2px solid white;
+           margin-right:10px;
+}
+
+.top-box .title-input, .top-box .time-input {
+    padding-top:0px;
+    padding-bottom:0px; 
+    height:28px;
+    border-radius:5px;
+    margin-right:10px;
+}
+
+.top-box .para {
+    margin-right:10px;
+}
+
+.top-box .step-input, .top-box .freq-input {
+    padding: 0;
+    height: 28px;
+}
+
+.top-box .create-button {
+    border-radius:4px;
+    border:2px solid white;
+    margin-left:10px;
+}
+
+.right-box {
     float:right;
 }
 
-.box .right-box .note-box,.box .right-box .reminder-box  {
+.right-box .note-box,.box .right-box .reminder-box  {
     float:right;
 }
 
 .boxed {
-    font-size:18px;
     padding:3px;
     border:1px solid white;
 }
@@ -35,14 +68,18 @@
     display:block;
     margin-left:8px;
     border-bottom:1px dotted white;
-    padding-top:9px;
+    padding-top:12px;
 }
 
+/* make max visible length */
 .boxed .title {
-    display:inline;
-    width:45px;
-    height:10px;
+    position:relative;
+    font-size:18px;
+    display:inline-block;
     overflow:hidden;
+    width:260px;
+    text-overflow:ellipsis; /* for windows*/
+    white-space:nowrap; /*force no wrap*/
 }
 
 .boxed .operation {
@@ -63,7 +100,30 @@
 }
 
 .task-bar {
+    position:relative;
     text-align:right;
+}
+.task-bar input {
+    position:relative;
+    top:12px;
+    right:8px;
+}
+
+.boxed .task-list {
 
 }
 
+.task-item .task-checkbox {
+    padding-bottom:0px;
+}
+
+/* 使元素下沉 */
+.task-item .operation {
+    padding-top:16px;
+}
+/* 使input下沉 */
+.task-item .title input {
+    position:relative;
+    top:10px;
+    left:0px;
+}

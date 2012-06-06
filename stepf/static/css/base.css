@@ -32,6 +32,13 @@ a:hover {
 
 
 /* mine */
+
+input, select, label, button{
+    padding: 5px;
+    font-size: 16px;
+    height: 34px; 
+}
+
 #wrapper {
     position:relative;
 }
