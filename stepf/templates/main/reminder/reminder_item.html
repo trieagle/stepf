@@ -12,8 +12,7 @@
     </div>
 
     <div class="misc-operation">
-        <label>Time:<label>
-        <span>{{ areminder.alarm_time }}</span>
+        <label>Time:</label>
+        <span>{{ areminder.alarm_time|date:"m/d/Y H:i" }}</span>
     </div>
-
 </li>
