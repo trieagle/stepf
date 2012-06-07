@@ -2,12 +2,12 @@
 <li id={{ atask.pk|add_prefix:"task-"}} class="task-item">
     <div class="title">
         <input type="checkbox"></input>
-        <a>{{ atask.title }}</a>
+        <a href="" title="{{ atask.title }}">{{ atask.title }}</a>
     </div>
     <div class="operation">
         <label>{{ atask.curr_step }}/{{ atask.nstep }}</label>
         <label>diary</label>
-        <a href="#">==></a>
+        <a href="#" title="step forward">==></a>
     </div>
     <div class="misc-operation">
     </div>
