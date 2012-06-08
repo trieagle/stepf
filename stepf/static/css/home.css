@@ -20,9 +20,21 @@
     padding:20px;
 }
 
+
+
+/* set the up/down arrows */
+.top-box .create input::-webkit-outer-spin-button,
+.top-box .create input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: inline;
+    padding:0 0px 0 6px;
+    margin: 0px; /* <-- Apparently some margin are still there even though it's hidden */
+}
+/* */
+
 .top-box .type-select {
     border:2px solid white;
-           margin-right:10px;
+    margin-right:10px;
 }
 
 .top-box .title-input, .top-box .time-input {
@@ -43,10 +55,30 @@
 }
 
 .top-box .create-button {
-    border-radius:4px;
-    border:2px solid white;
-    margin-left:10px;
+   border-style:solid;
+   border-width:1px;
+   border-radius:4px;
+   box-shadow:0 1px 1px rgba(255,255,255,0.5) inset;
 }
+
+.top-box .create-button:hover {
+   box-shadow:0 1px 1px rgba(255,255,255,0.5) inset,0 0 2px rgba(0,0,0,0.2);
+   opacity:0.9;
+}
+.top-box .create-button:active {
+   box-shadow:0px 0px 6px 0px rgba(0,0,0,0.4) inset;
+   opacity:1;
+   color:rgba(255,255,255,0.5);
+}
+.top-box .create-button {
+   background:#4297da;
+   background:rgba(66,151,218,1);
+   border-color:#3663a4;
+   border-color:rgba(54,99,164,1);
+}
+
+
+
 
 .right-box {
     float:right;
@@ -151,12 +183,13 @@
     line-height:16px;
 }
 .task-item div.process li a {
-    display:block;
+    display:inline-block;
 	position:relative;
 	padding:8px 8px 3px 23px;
 	background:url(../img/nav-bg-left.png) no-repeat 0 0;
 }
-
+.task-item div.process li a.step-curr{
+}
 .task-item div.process li a.step-future {
     border-bottom:2px solid darkorange;
 }
