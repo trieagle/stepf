@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock%}
+{% block extra_css %}
+    <link rel="stylesheet" media="all" charset="utf-8" href="{{STATIC_URL}}css/home.css"/>
+    <link rel="stylesheet" media="all" charset="utf-8" href="{{STATIC_URL}}css/task.css"/>
+    <link rel="stylesheet" media="all" charset="utf-8" href="{{STATIC_URL}}css/note.css"/>
+    <link rel="stylesheet" media="all" charset="utf-8" href="{{STATIC_URL}}css/reminder.css"/>
+{% endblock%}
+
+{% block body %}        
+<div id="wrapper" class="container_12 clearfix">
+
+    <div id="header" class="grid_12 clearfix">
+        <div id="logo" class="logo clearfix">
+            <a href="/">StepForward</a>
+        </div>
+        <div id="menu" class="menubar clearfix">
+            <ul class="header-navigation">
+                <li><a class="personal" href="/">Personal</a>
+                </li>
+                <li><a class="group" href="/">Group</a>
+                </li>
+                <li><a class="overview" href="/">Overview</a>
+                </li>
+                <li><a class="alarm" href="/">Alarm</a>
+                </li>
+                <li><a class="userinfo" href="/account/userinfo/">{{user.username}}</a>
+                </li>
+                <li><a class="logout" href="/account/logout/">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main" class="main box grid_12 clearfix">
+    {% block main %}
+    {% endblock %}
+    </div>
+
+    <div id="footer" class="grid_12 clearfix">
+        <ul class="footer-navigation">
+            <li><a href="/about/">About</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+            <li><a href="/legal/">Legal</a></li>
+            <li><a href="#">{% now "Y" %} Stepf | stepf.net</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

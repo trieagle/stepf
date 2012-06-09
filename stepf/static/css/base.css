@@ -14,7 +14,8 @@ html {
 body {
     font-family: 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, 'Hiragino Sans GB', sans-serif;
     color: #555;
-    background: url(../img/body.png)
+           background-color:gray;
+#    background: url(../img/body.png)
 }
 
 a {
@@ -51,6 +52,9 @@ input, select, label {
     font-size: 16px;
     height: 34px; 
 }
+ul li {
+    display:inline-block;
+}
 
 #wrapper {
     position:relative;
@@ -73,6 +77,10 @@ input, select, label {
     font-size:28px;
     font-style:italic;
 }
+.logo a:hover {
+   font-style:normal; 
+}
+
 .menubar{
     float:center;
 }
@@ -81,9 +89,7 @@ input, select, label {
     text-align:center;
 }
 
-ul li {
-    display:inline;
-}
+
 
 .header-navigation {
     font-size:20px;
@@ -94,7 +100,7 @@ ul li {
     border-bottom:1px solid white;
 }
 
-.userinfo, .logout {
+##.userinfo, .logout {
     float:right;
     margin-right:10px;
 }

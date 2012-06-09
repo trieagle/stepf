@@ -8,3 +8,6 @@ urlpatterns = patterns(
     url(r'update_title/$', 'update_title'),
     url(r'update_message/$', 'update_message'),
 )
+urlpatterns += patterns('',
+    url(r'overview_task/$','stepf.views.overview_task'),
+)

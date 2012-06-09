@@ -2,10 +2,18 @@
 
 /* temp style*/
 .box, .right-box, .left-box {
-    border:1px dotted white;
+    border:1px dotted black;
 }
 .right-box {
     padding-left:22px;
+}
+
+.box .boxed .operation a:hover {
+    background:rgba(66, 151, 218, 0.6);
+border:1px solid green;
+}
+.box .boxed .operation a:active {
+    background:rgba(66, 151, 218, 1);
 }
 /* end temp style*/
 
@@ -99,6 +107,7 @@
 }
 
 .boxed ul {
+    
 }
 
 .boxed li {
@@ -109,21 +118,25 @@
 }
 
 /* make max visible length */
-.boxed .title {
-    position:relative;
-    font-size:18px;
-    display:inline-block;
+.right-box .title {
     overflow:hidden;
-    width:260px;
-    text-overflow:ellipsis; /* for windows*/
-    white-space:nowrap; /*force no wrap*/
+    font-size:18px;
 }
+.left-box .title {
+    display:block;
+    overflow:hidden;
+    font-size:18px;
+}
+.left-box input {
 
+}
+.left-box .title a {
+    display:inline-block;
+}
 .boxed .operation {
-    float:right;   
-    display:inline;
+    display:block;
     font-size:15px;
-    vertical-align:sub;
+    text-align:right;
 }
 
 .boxed .misc-operation {
@@ -150,7 +163,7 @@
 
 }
 
-.task-item .task-checkbox {
+#.task-item .task-checkbox {
     padding-bottom:0px;
 }
 

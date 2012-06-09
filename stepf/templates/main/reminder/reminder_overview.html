@@ -1,0 +1,52 @@
+{% extends "main/mbase.html" %}
+{% load common_filters %}
+
+{% block main %}        
+
+<div id="reminder-box" class="reminder-box grid_12 clearfix">
+
+    <h2>Fast Note</h2>
+
+    <div class="boxed reminder-in-process grid_5">
+        <h4>In Process</h4>
+        <ul id="reminder-list" class="reminder-list clearfix">
+        {% for areminder in reminder_in_process %}
+        <li id={{ areminder.pk|add_prefix:"reminder-"}}>
+
+             <div class="title">
+                <a href="#" title="{{ areminder.title }}">{{ areminder.title }}</a> 
+            </div>
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="boxed reminder-done grid_5">
+        <h4>Already Done</h4>
+        <ul id="reminder-list" class="reminder-list clearfix">
+        {% for areminder in reminder_done %}
+        <li id={{ areminder.pk|add_prefix:"reminder-"}}>
+
+             <div class="title">
+                <a href="#" title="{{ areminder.title }}">{{ areminder.title }}</a> 
+            </div>
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="boxed reminder-deleted grid_5">
+        <h4>Deleted</h4>
+        <ul id="reminder-list" class="reminder-list clearfix">
+        {% for areminder in reminder_deleted %}
+        <li id={{ areminder.pk|add_prefix:"reminder-"}}>
+
+             <div class="title">
+                <a href="#" title="{{ areminder.title }}">{{ areminder.title }}</a> 
+            </div>
+        </li>
+
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
