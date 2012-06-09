@@ -1,4 +1,5 @@
 {% load common_filters %}
+{% load task_filters %}
 <li id={{ atask.pk|add_prefix:"task-"}} class="task-item">
     <div class="title">
         <input type="checkbox"></input>
@@ -16,10 +17,20 @@
 		<ul class="process-bar">
         {% for i in atask.nstep|get_range %}
             {% if i < atask.curr_step %}
-            <li><a href="" class="step{{i}} step-past" >{{i}}<span>&nbsp;</span></a></li>
+            <li>
+                <a href="" class="task-step step{{i}} step-past" >{{i}}<span>&nbsp;</span></a>
+                {% for msg in atask.message_set.all %}
+                    {% if msg.step_id = i|add:"1" %}  
+                    <div id={{ msg.pk|add_prefix:"message-" }} class="message bubble-box arrow-top" style="position:absolute">
+                        <textarea value="">{{ msg.content }}</textarea>
+                        <input class="message-update-confirm" type="button" value="confirm" > </input>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </li>
             {% endif %}
             {% if i = atask.curr_step %}
-            <li><a href="" class="step{{i}} step-curr" >{{i}}<span>&nbsp;</span></a></li>
+            <li><a href="" class="step step{{i}} step-curr" >{{i}}<span>&nbsp;</span></a></li>
             {% endif %}
             {% if i > atask.curr_step %}
             <li><a href="" class="step{{i}} step-future" >{{i}}<span>&nbsp;</span></a></li>
@@ -27,5 +38,4 @@
         {% endfor %}
 		</ul>
 	</div>
-
 </li>

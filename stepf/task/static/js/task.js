@@ -14,6 +14,7 @@ function move_handler(move_type) {
           //$('#' + move_type + id_string).click(inner);
           $('#move-forward-' + id_string).click(move_forward_handler); //TODO
           $('#move-backward-' + id_string).click(move_backward_handler);
+          $('.message').hide();
         }
       }
     });
@@ -83,6 +84,34 @@ function move_select_backward() {
   return false;
 }
 
+function message_handler() {
+  //TODO Avoid scan
+  $('.message').hide();
+  if ($(this).parent().find('div')) {
+    $(this).parent().find('div').show();
+  }
+  return false;
+}
+
+function update_message() {
+  var id_string = $(this).parent().attr('id').replace('message-', '');
+  var post_msg = {
+    id: parseInt(id_string, 10),
+    content: $(this).parent().find('textarea').val()
+  };
+  $.ajax({
+    url: '/task/update_message/',
+    type: 'post',
+    dataType: 'json',
+    data: JSON.stringify(post_msg),
+    success: function (updated) {
+      if (updated) {
+        //TODO Avoid scan
+        $('.message').hide();
+      }
+    }
+  });
+}
 
 $(document).ready(function () {
   $('#delete-select-task').click(delete_task_handler);
@@ -96,4 +125,7 @@ $(document).ready(function () {
   });
   $('.move-forward').click(move_forward_handler);
   $('.move-backward').click(move_backward_handler);
+  $('.message').hide();
+  $('.message-update-confirm').click(update_message);
+  $('.task-step').click(message_handler);
 });
