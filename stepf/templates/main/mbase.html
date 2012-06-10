@@ -11,23 +11,23 @@
 {% block body %}        
 <div id="wrapper" class="container_12 clearfix">
 
-    <div id="header" class="grid_12 clearfix">
+    <div id="header" class="header clearfix">
         <div id="logo" class="logo clearfix">
             <a href="/">StepForward</a>
         </div>
         <div id="menu" class="menubar clearfix">
-            <ul class="header-navigation">
-                <li><a class="personal" href="/">Personal</a>
+            <ul class="header-nav">
+                <li class="personal"><a class="personal" href="/">Personal</a>
                 </li>
-                <li><a class="group" href="/">Group</a>
+                <li class="grounp"><a class="group" href="/">Group</a>
                 </li>
-                <li><a class="overview" href="/">Overview</a>
+                <li class="overflow"><a class="overview" href="/">Overview</a>
                 </li>
-                <li><a class="alarm" href="/">Alarm</a>
+                <li class="alarm"><a class="alarm" href="/">Alarm</a>
                 </li>
-                <li><a class="userinfo" href="/account/userinfo/">{{user.username}}</a>
-                </li>
-                <li><a class="logout" href="/account/logout/">Logout</a>
+                <li class="userinfo">
+                <a class="userinfo" href="/account/userinfo/">{{user.username}}</a>
+<a class="logout" href="/account/logout/">(Logout)</a>
                 </li>
             </ul>
         </div>
@@ -39,7 +39,7 @@
     </div>
 
     <div id="footer" class="grid_12 clearfix">
-        <ul class="footer-navigation">
+        <ul class="footer-nav">
             <li><a href="/about/">About</a></li>
             <li><a href="/faq/">FAQ</a></li>
             <li><a href="/legal/">Legal</a></li>
