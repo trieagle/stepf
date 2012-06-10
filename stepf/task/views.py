@@ -74,14 +74,34 @@ def update_step(request):
         task = Task.objects.get(id=stp_task['id'])
         #FIXME RACE
         if not task.update_step(stp_task['step']):
-            return HttpResponse(simplejson.dumps(''), content_type='application/json')
+            return HttpResponse(simplejson.dumps(''),
+                                content_type='application/json')
         task.save()
         rendered = render_to_string('main/task/task_item.html',
                                     {'atask': task})
         return HttpResponse(simplejson.dumps(rendered),
                             content_type='application/json')
     except Task.DoesNotExist:
-        return HttpResponse(simplejson.dumps(''), content_type='application/json')
+        return HttpResponse(simplejson.dumps(''),
+                            content_type='application/json')
+
+
+@debug_in_out
+def update_nstep(request):
+    stp_task = _fetch_task_or_ajax_error(request)
+    try:
+        task = Task.objects.get(id=stp_task['id'])
+        if not task.update_total_step(stp_task['step']):
+            return HttpResponse(simplejson.dumps(''),
+                                content_type='application/json')
+        task.save()
+        rendered = render_to_string('main/task/task_item.html',
+                                    {'atask': task})
+        return HttpResponse(simplejson.dumps(rendered),
+                            content_type='application/json')
+    except Task.DoesNotExist:
+        return HttpResponse(simplejson.dumps(''),
+                            content_type='application/json')
 
 
 def update_title(request):

@@ -14,6 +14,40 @@ function move_handler(move_type) {
           //$('#' + move_type + id_string).click(inner);
           $('#move-forward-' + id_string).click(move_forward_handler); //TODO
           $('#move-backward-' + id_string).click(move_backward_handler);
+          $('.inc-nstep').click(inc_nstep_handler);
+          $('.dec-nstep').click(dec_nstep_handler);
+          $('.task-step').click(message_handler);
+          $('.message-update-confirm').click(update_message);
+          $('.message').hide();
+        }
+      }
+    });
+    return false;
+  };
+}
+
+function nstep_handler(nstep_type) {
+  var delta = (nstep_type === "inc-nstep-") ? 1 : -1;
+  return function inner() {
+    var id_string = $(this).attr('id').replace(nstep_type, '');
+    var post_data = {
+      id: parseInt(id_string, 10),
+      step: delta
+    };
+    $.ajax({
+      url: 'task/update_nstep/',
+      type: 'post',
+      data: JSON.stringify(post_data),
+      success: function (stepped) {
+        if (stepped !== "") {
+          $('#task-' + id_string).replaceWith(stepped);
+          //$('#' + move_type + id_string).click(inner);
+          $('#move-forward-' + id_string).click(move_forward_handler); //TODO
+          $('#move-backward-' + id_string).click(move_backward_handler);
+          $('.inc-nstep').click(inc_nstep_handler);
+          $('.dec-nstep').click(dec_nstep_handler);
+          $('.task-step').click(message_handler);
+          $('.message-update-confirm').click(update_message);
           $('.message').hide();
         }
       }
@@ -63,6 +97,8 @@ function delete_task_handler() {
 
 var move_forward_handler = move_handler('move-forward-');
 var move_backward_handler = move_handler('move-backward-');
+var inc_nstep_handler = nstep_handler('inc-nstep-');
+var dec_nstep_handler = nstep_handler('dec-nstep-');
 
 
 function move_select_forward() {
@@ -125,6 +161,8 @@ $(document).ready(function () {
   });
   $('.move-forward').click(move_forward_handler);
   $('.move-backward').click(move_backward_handler);
+  $('.inc-nstep').click(inc_nstep_handler);
+  $('.dec-nstep').click(dec_nstep_handler);
   $('.message').hide();
   $('.message-update-confirm').click(update_message);
   $('.task-step').click(message_handler);

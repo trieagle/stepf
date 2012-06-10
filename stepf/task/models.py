@@ -51,6 +51,16 @@ class Task(models.Model):
             return True
         return False
 
+    def update_total_step(self, stp):
+        if stp == 1:
+            self.nstep += 1
+            return True
+        elif stp == -1 and self.nstep > 1 and self.curr_step < self.nstep:
+            self.nstep -= 1
+            return True
+
+        return False
+
     # override
     def delete(self, *args, **kwargs):
         self.alive = 0
