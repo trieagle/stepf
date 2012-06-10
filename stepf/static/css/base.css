@@ -14,8 +14,7 @@ html {
 body {
     font-family: 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, 'Hiragino Sans GB', sans-serif;
     color: #555;
-           background-color:gray;
-#    background: url(../img/body.png)
+    background-color:gray;
 }
 
 a {
@@ -33,19 +32,6 @@ a:hover {
 
 
 /* mine */
-button {
-    display:inline-block;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:bold;
-    color:#fff;
-    color:rgba(255,255,255,1);
-    padding:0.5em 1em;
-    margin:0.5em;
-}
-
-input[type="checkbox"]{
-}
 
 input, select, label {
     padding: 5px;
@@ -60,16 +46,22 @@ ul li {
     position:relative;
 }
 
-/*暂时不显示登录界面的logo
- */
-.account .logo {
-    display:none;
+.header {
+    width:1265px;
+    left:0px;
+    font-size:20px;
+    border:1px solid white;
+    background:darkgray;
+    position:fixed;
+    text-align:center;
+    opacity:1;
+    z-index:99;
 }
+
 .logo {
     position:absolute;
-    left:30px;
-    top:20px;
     height:30px;
+    left:10%;
 }
 .logo a {
     font-family: "Lucida Console", Courier, monospace;
@@ -81,33 +73,24 @@ ul li {
    font-style:normal; 
 }
 
-.menubar{
-    float:center;
-}
-
-#header ul, #footer ul {
-    text-align:center;
-}
-
-
-
-.header-navigation {
-    font-size:20px;
+.header .header-nav{
     margin:0;
-    padding:14px;
-    overflow:hidden;
-    padding-bottom:0px;
-    border-bottom:1px solid white;
+    padding:0px;
 }
 
-##.userinfo, .logout {
-    float:right;
-    margin-right:10px;
+.header-nav li.userinfo {
+    position:absolute;
+    right:10%;
+}
+
+
+.footer-nav {
+    text-align:center;
 }
 
 /* minimum hight */
 #wrapper #main {
-    min-height:550px;
+    min-height:666px;
 }
 
 
@@ -116,7 +99,5 @@ ul li {
     real func implemented in 960.css
     border:1px dashed gray;
      */
-    margin:3px;
-    padding:4px;
 }
 
