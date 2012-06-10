@@ -153,7 +153,6 @@ h2.part-title {
 .left-box ul.process-boar {
     margin:0 auto;
     list-style:none;
-    list-style-position:inside;
 }
 
 .left-box div.process li {
@@ -198,6 +197,32 @@ h2.part-title {
     background:url(../img/nav-bg-right.png) no-repeat right bottom !important;
 }
 
+.left-box div.process div.message {
+    margin-top:10px;
+    border:1px solid white;
+    background:darkgray;
+    z-index:1100;
+}
+.left-box div.process div.message textarea {
+    display:block;  
+    padding:2px 4px 2px 4px;
+    margin:2px;
+    height:55px;
+    width:115px;
+    border:1px solid white;
+    border-radius:4px;
+
+}
+.left-box div.process div.message input.msg-ok {
+    float:right;
+    font-size: 16px;
+    padding:2px 4px 2px 4px;
+    margin:4px 10px 2px 0px;
+    height:25px;
+    width:39px;
+    border:1px solid white;
+    border-radius:4px;
+}
 
 .right-box {
     padding-left:22px;

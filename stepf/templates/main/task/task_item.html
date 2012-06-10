@@ -17,13 +17,13 @@
 		<ul class="process-bar">
         {% for i in atask.nstep|get_range %}
             {% if i < atask.curr_step %}
-            <li>
+            <li class="process-li">
                 <a href="" class="task-step step{{i}} step-past" >{{i}}<span>&nbsp;</span></a>
                 {% for msg in atask.message_set.all %}
                     {% if msg.step_id = i|add:"1" %}  
                     <div id={{ msg.pk|add_prefix:"message-" }} class="message bubble-box arrow-top" style="position:absolute">
                         <textarea value="">{{ msg.content }}</textarea>
-                        <input class="message-update-confirm" type="button" value="confirm" > </input>
+                        <input class="message-update-confirm msg-ok" type="button" value="ok" > </input>
                     </div>
                     {% endif %}
                 {% endfor %}
