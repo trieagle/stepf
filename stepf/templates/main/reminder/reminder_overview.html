@@ -3,12 +3,15 @@
 
 {% block main %}        
 
-<div id="reminder-box" class="reminder-box grid_12 clearfix">
+<div id="reminder-box" class="reminder-box reminder-detail clearfix">
 
-    <h2>Fast Note</h2>
+    <h2>Reminder</h2>
 
-    <div class="boxed reminder-in-process grid_5">
+    <div class="boxed reminder-in-process">
         <h4>In Process</h4>
+        {% if not reminder_in_process %}
+            <h4 class="reminder-null">None</h4>
+        {% endif %}
         <ul id="reminder-list" class="reminder-list clearfix">
         {% for areminder in reminder_in_process %}
         <li id={{ areminder.pk|add_prefix:"reminder-"}}>
@@ -20,8 +23,11 @@
         {% endfor %}
         </ul>
     </div>
-    <div class="boxed reminder-done grid_5">
+    <div class="boxed reminder-done">
         <h4>Already Done</h4>
+        {% if not reminder_done %}
+            <h4 class="reminder-null">None</h4>
+        {% endif %}
         <ul id="reminder-list" class="reminder-list clearfix">
         {% for areminder in reminder_done %}
         <li id={{ areminder.pk|add_prefix:"reminder-"}}>
@@ -33,8 +39,11 @@
         {% endfor %}
         </ul>
     </div>
-    <div class="boxed reminder-deleted grid_5">
+    <div class="boxed reminder-deleted">
         <h4>Deleted</h4>
+        {% if not reminder_deleted %}
+            <h4 class="reminder-null">None</h4>
+        {% endif %}
         <ul id="reminder-list" class="reminder-list clearfix">
         {% for areminder in reminder_deleted %}
         <li id={{ areminder.pk|add_prefix:"reminder-"}}>

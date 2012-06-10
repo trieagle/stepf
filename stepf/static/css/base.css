@@ -12,40 +12,24 @@ html {
 }
 
 body {
-    font-family: 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, 'Hiragino Sans GB', sans-serif;
+    font-family:"楷体";
     color: #555;
-           background-color:gray;
-#    background: url(../img/body.png)
+    background-color:darkgray;
 }
 
 a {
-    padding:9px 10px 8px;
+    font-family:"楷体";
     color:#333;
-    font-size:15px;
-    line-height:20px;
     text-decoration:none; 
 }
 
 a:hover {
-    text-shadow:1px 1px #6a8c1a;
+    text-shadow:-1px -1px #111111;
     text-decoration:none;
 }
 
 
 /* mine */
-button {
-    display:inline-block;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:bold;
-    color:#fff;
-    color:rgba(255,255,255,1);
-    padding:0.5em 1em;
-    margin:0.5em;
-}
-
-input[type="checkbox"]{
-}
 
 input, select, label {
     padding: 5px;
@@ -57,22 +41,32 @@ ul li {
 }
 
 #wrapper {
+    background-color:gray;
+    margin:0 auto;
+    width:80%;
     position:relative;
 }
 
-/*暂时不显示登录界面的logo
- */
-.account .logo {
-    display:none;
+.header {
+    width:100%;
+    left:0px;
+    font-size:20px;
+    height:31px;
+    background:darkgray;
+    position:fixed;
+    text-align:center;
+    opacity:0.9;
+    z-index:1000;
+    border-bottom:1px solid white;
 }
+
 .logo {
     position:absolute;
-    left:30px;
-    top:20px;
-    height:30px;
+    height:28px;
+    left:10%;
+    top:2px;
 }
 .logo a {
-    font-family: "Lucida Console", Courier, monospace;
     font-family:"New Century Schoolbook", Times, serif ;
     font-size:28px;
     font-style:italic;
@@ -81,42 +75,72 @@ ul li {
    font-style:normal; 
 }
 
-.menubar{
-    float:center;
+.header .header-nav {
+    font-size:22px;
+    margin-top:5px; 
 }
 
-#header ul, #footer ul {
-    text-align:center;
+.header .header-nav li {
+    padding:0 6px;
+}
+.header-nav li.userinfo {
+    position:absolute;
+    right:10%;
 }
 
-
-
-.header-navigation {
-    font-size:20px;
-    margin:0;
-    padding:14px;
-    overflow:hidden;
-    padding-bottom:0px;
-    border-bottom:1px solid white;
+.top-box {
+    position:relative;
+    margin:0 auto;
+    margin-left:3%;
 }
 
-##.userinfo, .logout {
+.left-box {
+    position:relative;
+    float:left;
+    width:52%;
+    margin-left:3%;
+}
+.right-box {
+    position:relative;
     float:right;
-    margin-right:10px;
+    width:36%;
+    margin-right:3%;
+}
+.right-box .note-box, .right-box .reminder-box {
+    position:relative;
+    float:left;
+    width:100%;
+}
+
+.footer-nav {
+    width:100%;
+    text-align:center;
+    margin-top:18px;
+}
+
+.footer-nav li {
+    font-size:14px;
+    padding:0 10px;
 }
 
 /* minimum hight */
 #wrapper #main {
-    min-height:550px;
+    min-height:666px;
 }
 
 
 .clearfix{
-    /*
-    real func implemented in 960.css
-    border:1px dashed gray;
-     */
-    margin:3px;
-    padding:4px;
+  zoom: 1;
 }
-
+.clearfix:before,
+.clearfix:after {
+  content: '.';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  font-size: 0;
+  line-height: 0;
+  width: 0;
+  height: 0;
+  clear: both;
+}

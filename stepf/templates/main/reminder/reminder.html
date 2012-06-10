@@ -1,7 +1,8 @@
 <div class="boxed">
-    <ul id="reminder-list" class="task-list clearfix">
+    <ul id="reminder-list" class="reminder-list clearfix">
     {% for areminder in reminder %}
         {% include "main/reminder/reminder_item.html" %}
     {% endfor %}
     </ul>
+    <a class="detail reminder-detail" href="/reminder/overview_reminder/">more</a>
 </div>

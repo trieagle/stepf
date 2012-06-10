@@ -1,34 +1,42 @@
 @charset "utf-8";
 
-/* temp style*/
-.box, .right-box, .left-box {
-    border:1px dotted black;
-}
-.right-box {
-    padding-left:22px;
+/* common style*/
+.box {
+    border:1px dotted gray;
+    padding-bottom:8px;
+    margin-bottom:2px
 }
 
+.box .boxed .operation a {
+    border:1px solid gray;
+}
 .box .boxed .operation a:hover {
-    background:rgba(66, 151, 218, 0.6);
-border:1px solid green;
+    background:rgba(169, 169, 169, 0.6);
+    border:1px solid darkgray;
 }
 .box .boxed .operation a:active {
-    background:rgba(66, 151, 218, 1);
+    background:rgba(169, 169, 169, 1);
 }
-/* end temp style*/
+h2.part-title {
+    font-family:"楷体";
+    font-size:22px;
+    padding:2px;
+    margin:20px 0 5px 5px;
+    color:darkgray !important;
+}
 
-.box {
-    position:relative;
-    margin-left:5px;
+/* end common style*/
+
+/*
+ create part
+ */
+.top-box {
+    margin-top:3%;
 }
 
 .top-box .create {
-    border:1px dotted white;
-    margin-top:-20px;
-    padding:20px;
+    margin:0 0 3% 10%;
 }
-
-
 
 /* set the up/down arrows */
 .top-box .create input::-webkit-outer-spin-button,
@@ -38,179 +46,165 @@ border:1px solid green;
     padding:0 0px 0 6px;
     margin: 0px; /* <-- Apparently some margin are still there even though it's hidden */
 }
-/* */
 
-.top-box .type-select {
-    border:2px solid white;
+.top-box select.type-select {
+    color:dimgray;
+    margin:5px;
+    border:2px solid gray;
     margin-right:10px;
+    cursor: pointer;
+    background-color:darkgray;
+
+}
+.top-box .type-select:hover {
+    border:2px solid darkgray;
+    background-color:gray;
 }
 
+.top-box .type-select:active {
+   color:dimgray;
+}
 .top-box .title-input, .top-box .time-input {
+    border:2px solid darkgray;
     padding-top:0px;
     padding-bottom:0px; 
     height:28px;
     border-radius:5px;
     margin-right:10px;
+    width:25%;
 }
 
-.top-box .para {
-    margin-right:10px;
+.top-box .create .para {
+    display:inline;
 }
 
 .top-box .step-input, .top-box .freq-input {
-    padding: 0;
+    border:2px solid darkgray;
+    margin-right:10px;
+    border-radius:5px;
     height: 28px;
+    width:65px;
+    padding: 0;
 }
 
 .top-box .create-button {
-   border-style:solid;
-   border-width:1px;
-   border-radius:4px;
-   box-shadow:0 1px 1px rgba(255,255,255,0.5) inset;
+    font-size:16px;
+    color:dimgray;
+    padding:4px 8px;
+    margin:5px;
+    border-radius:5px;
+    border:2px solid gray;
+    background:darkgray;
+    cursor: pointer;
 }
 
 .top-box .create-button:hover {
-   box-shadow:0 1px 1px rgba(255,255,255,0.5) inset,0 0 2px rgba(0,0,0,0.2);
-   opacity:0.9;
+    border:2px solid darkgray;
+    background-color:gray;
+    opacity:0.9;
 }
 .top-box .create-button:active {
-   box-shadow:0px 0px 6px 0px rgba(0,0,0,0.4) inset;
-   opacity:1;
-   color:rgba(255,255,255,0.5);
-}
-.top-box .create-button {
-   background:#4297da;
-   background:rgba(66,151,218,1);
-   border-color:#3663a4;
-   border-color:rgba(54,99,164,1);
+   color:darkgray;
 }
 
-
-
-
-.right-box {
-    float:right;
-}
-
-.right-box .note-box,.box .right-box .reminder-box  {
-    float:right;
-}
-
-.left-box .task-bar {
-    margin-top:-20px;
-    padding-top:0px;
-}
-
+/*
+ share by left&right box
+ */
 .boxed {
-    padding:3px;
-    border:1px solid white;
+    position:relative;
+    border:2px solid dimgray;
 }
 
-.boxed ul {
-    
-}
-
-.boxed li {
+.boxed  li {
     display:block;
-    margin-left:8px;
-    border-bottom:1px dotted white;
-    padding-top:12px;
-}
-
-/* make max visible length */
-.right-box .title {
-    overflow:hidden;
-    font-size:18px;
-}
-.left-box .title {
-    display:block;
-    overflow:hidden;
-    font-size:18px;
-}
-.left-box input {
-
-}
-.left-box .title a {
-    display:inline-block;
+    margin-top:12px;
 }
 .boxed .operation {
     display:block;
     font-size:15px;
     text-align:right;
+    margin-right:5px;
 }
 
 .boxed .misc-operation {
-    font-size:13px;
+    display:none;
+}
+
+div.boxed a.detail{
+    float:right;
+    font-size:14px;
+    padding-right:4px;
+}
+
+/* left-box */
+.left-box div.task-menu {
+    border-bottom:1px dashed dimgray;
+    width:98%;
+    margin-bottom:15px;
     text-align:right;
-}
-
-.create .para {
-    display:inline;
-
-}
-
-.task-bar {
-    position:relative;
-    text-align:right;
-}
-.task-bar input {
-    position:relative;
-    top:12px;
-    right:8px;
-}
-
-.boxed .task-list {
-
-}
-
-#.task-item .task-checkbox {
-    padding-bottom:0px;
-}
-
-/* 使元素下沉 */
-.task-item .operation {
-    padding-top:16px;
-}
-/* 使input下沉 */
-.task-item .title input {
-    position:relative;
-    top:10px;
-    left:0px;
-}
-
-.task-item div.process {
-    margin-bottom:2px;
+    line-height:10px !important;
     overflow:hidden;
+    padding:4px 4px 0 0;
 }
 
-.task-item ul.process-boar {
+.left-box .task-menu input.task-checkbox {
+    display:inline;
+}
+.left-box .task-list .task-item {
+    margin:20px 0 20px 10px;
+    border-bottom:2px dotted dimgray;
+    padding-bottom:2px;
+}
+
+.left-box .task-item .title {
+    display:block;
+    overflow:hidden;
+    font-size:16px
+}
+
+.left-box .task-item .title input {
+    margin-right:4px;
+}
+
+.left-box li.task-item div.operation label, .left-box li.task-item div.operation a {
+    padding:0px;
+}
+.left-box div.process {
+    overflow:hidden;
+    margin-left:16px;
+}
+
+.left-box ul.process-boar {
     margin:0 auto;
     list-style:none;
-    list-style-position:inside;
 }
 
-.task-item .process li {
+.left-box div.process li {
     float:left;
     border-bottom:none;
     font-size:16px;
     line-height:16px;
+    margin:2px;
+    padding-right:5px;
 }
-.task-item div.process li a {
+.left-box div.process li a {
+    width:13px;
     display:inline-block;
 	position:relative;
-	padding:8px 8px 3px 23px;
+	padding:8px 8px 6px 23px;
 	background:url(../img/nav-bg-left.png) no-repeat 0 0;
 }
-.task-item div.process li a.step-curr{
+.left-box div.process li a.step-curr{
+    border-bottom:2px solid white;
 }
-.task-item div.process li a.step-future {
-    border-bottom:2px solid darkorange;
+.left-box div.process li a.step-future {
+    border-bottom:2px solid darkgray;
 }
-.task-item div.process li a.step-past {
-    border-bottom:2px solid darkgreen;
+.left-box div.process li a.step-past {
+    border-bottom:2px solid white;
 }
 
-.task-item div.process li a span {
+.left-box div.process li a span {
     position:absolute;
 	top:0px;
 	right:-15px;
@@ -220,10 +214,114 @@ border:1px solid green;
 	z-index:100;
 }
 
-.task-item div.process li a:hover, .task-item div.process li a.step-curr {
+.left-box div.process li a:hover, .left-box div.process li a.step-curr {
     background:url(../img/nav-bg-left.png) no-repeat 0 -32px !important;
-	color:#000000;
 }
-.task-item div.process li a:hover span, .task-item div.process li a.step-curr span {
+.left-box div.process li a:hover span, .left-box div.process li a.step-curr span {
     background:url(../img/nav-bg-right.png) no-repeat right bottom !important;
+}
+
+.left-box div.process div.message {
+    margin-top:10px;
+    border:1px solid white;
+    background:darkgray;
+    z-index:1100;
+}
+.left-box div.process div.message textarea {
+    display:block;  
+    padding:2px 4px 2px 4px;
+    margin:2px;
+    height:55px;
+    width:115px;
+    border:1px solid white;
+    border-radius:4px;
+
+}
+.left-box div.process div.message input.msg-ok {
+    float:right;
+    font-size: 16px;
+    padding:2px 4px 2px 4px;
+    margin:4px 10px 2px 0px;
+    height:25px;
+    width:39px;
+    border:1px solid white;
+    border-radius:4px;
+}
+
+
+.right-box ul.note-list li, .right-box ul.reminder-list li {
+    overflow:hidden;
+    padding-left:4px;
+}
+.right-box ul.note-list li div.operation, .right-box ul.reminder-list li div.operation {
+    position:relative;
+    top:-6px;
+    border-bottom:2px dotted dimgray;
+}
+
+.right-box div.boxed {
+    overflow:hidden;
+}
+
+.right-box .title {
+    overflow:hidden;
+    font-size:16px !important;
+}
+
+/* detail pages */
+.task-detail {
+    font-size:16px;
+}
+
+.task-detail h2 {
+    color:darkgray !important;
+    margin:5% 0 2% 2%;
+}
+
+.task-detail .boxed {
+    border:none;
+    border-top:2px solid darkgray;
+    padding:1% 0 2% 4%;
+}
+
+.task-detail .task-null {
+    padding-left:3%; 
+}
+
+.note-detail {
+    font-size:16px;
+}
+
+.note-detail h2 {
+    color:darkgray !important;
+    margin:5% 0 2% 2%;
+}
+
+.note-detail .boxed {
+    border:none;
+    border-top:2px solid darkgray;
+    padding:1% 0 2% 4%;
+}
+
+.note-detail .note-null {
+    padding-left:3%; 
+}
+
+.reminder-detail {
+    font-size:16px;
+}
+
+.reminder-detail h2 {
+    color:darkgray !important;
+    margin:5% 0 2% 2%;
+}
+
+.reminder-detail .boxed {
+    border:none;
+    border-top:2px solid darkgray;
+    padding:1% 0 2% 4%;
+}
+
+.reminder-detail .reminder-null {
+    padding-left:3%; 
 }
