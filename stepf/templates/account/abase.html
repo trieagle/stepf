@@ -4,22 +4,22 @@
     <link rel="stylesheet" media="all" charset="utf-8" href="{{STATIC_URL}}css/account.css"/>
 {% endblock%}
 
-{% block body %}        
-<div id="wrapper" class="account container_12 clearfix">
+{% block body %}
+<div id="wrapper" class="wrapper clearfix">
 
-    <div id="header" class="grid_12 clearfix">
+    <div id="header" class="header clearfix">
         <div id="logo" class="logo" >
             <a href="/">StepForward</a>
         </div>
     </div>
 
-    <div id="main" class="account-main grid_12 clearfix">
+    <div id="main" class="account main box clearfix">
         {% block mainpart %}
         {% endblock %}
     </div>
 
-    <div id="footer" class="grid_12 clearfix">
-        <ul class="footer-navigation">
+    <div id="footer" class="footer clearfix">
+        <ul class="footer-nav">
             <li><a href="/about/">About</a></li>
             <li><a href="/faq/">FAQ</a></li>
             <li><a href="/legal/">Legal</a></li>

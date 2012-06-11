@@ -1,8 +1,19 @@
 @charset "utf-8";
+#wrapper {
+    width:80%;
+}
 
-#wrapper .account-main {
-    padding:115px 00px 50px 0;
-    min-height:300px !important;
+.wrapper .header {
+    top:0px; 
+}
+.wrapper .main {
+    margin:0 auto;
+    margin-top:175px;
+}
+
+.wrapper .footer {
+position:fix;
+bottom:10px;
 }
 
 
@@ -16,26 +27,42 @@
 
 .help-msg {
     padding:5px;
-    width:300px;
+    width:275px;
     margin:auto;
-    background: #FFEBE8 none repeat scroll 0;
-    border: 1px solid #DD3C10;
+    margin-top:0px;
+    margin-bottom:20px;
+    background: gray none repeat scroll 0;
+    border: 1px solid darkorange;
 }
-/* login part*/
-.login-box {
 
+/* login part*/
+.login-box, .register-box {
+    position:relative;
 }
 
 /* centering the form */
 .login-form , .register-form {
-    width:380px;
+    margin:0px auto;
+    width:380px !important;
     height:400px;
-    margin:auto;
 }
 
 .userinfo-form {
-    width:600px;
     margin:auto;
+}
+
+.form-title {
+    border-radius:4px;
+    background-color:darkgray;
+    padding:2px 2px 2px 21px;
+    font-size:30px;
+}
+
+.form-body {
+    padding:38px;
+    background-color:dimgray;
+    overflow:hidden;
+    font-size:18px;
 }
 
 .form-body input {
@@ -43,25 +70,14 @@
     border-radius:4px;
     width:295px;
     font-size:22px;
+    margin-top:5px;
 }
 
-.form-title {
-    background-color:#a9e1ff;
-    padding:2px 2px 2px 21px;
-    font-size:30px;
-}
-
-.form-body {
-    padding:38px;
-    background-color:#e9f1f4;
-    overflow:hidden;
-    border-style:solid;
-    font-size:18px;
-}
 
 .form-body p {
     margin-bottom:0px;
-    margin-top:10px;
+    margin-top:15px;
+    color:white;
 }
 
 .form-footer {
@@ -72,30 +88,24 @@
 }
 
 .form-footer .submit-button {
-   border-style:solid;
-   border-width:1px;
-   border-radius:4px;
-   box-shadow:0 1px 1px rgba(255,255,255,0.5) inset;
-}
-.form-footer .submit-button{
-   background:#f2f2f2;
-   background:rgba(0,0,0,0.05);
-   border-color:#eee;
-   border-color:rgba(0,0,0,0.1);
-   color:#999;
-   color:rgba(0,0,0,0.5);
+    cursor:pointer;
+    border-style:solid;
+    border-width:1px;
+    border-radius:4px;
+    box-shadow:0 1px 1px rgba(255,255,255,0.5) inset;
+    background:white;
+    border-color:gray;
+    color:dimgray;
+    opacity:0.8;
 }
 .form-footer .submit-button:hover {
+    background:gray;
+    color:white;
    box-shadow:0 1px 1px rgba(255,255,255,0.5) inset,0 0 2px rgba(0,0,0,0.2);
    opacity:0.9;
 }
 .form-footer .submit-button:active {
    box-shadow:0px 0px 6px 0px rgba(0,0,0,0.1) inset;
    opacity: 1;
-   color:rgba(0,0,0,0.2);
 }
 
-.form-footer a {
-    color:gray;
-}
- 
