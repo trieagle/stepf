@@ -2,31 +2,33 @@
 
 {% block main %}        
 
-<div id="top-box" class="top-box create-box grid_12 clearfix">
-    <h2 class="part-title">Creation</h2>
-    {% include "main/create.html" %}
+<div id="top-box" class="top-box clearfix">
+
+    <div class="create-box">
+        <h2 class="part-title">Creation</h2>
+        {% include "main/create.html" %}
+    </div>
+
 </div>
 
-<div id="left-box" class="left-box task-box grid_6 clearfix">
-    <a href="/task/overview_task/">
+<div id="left-box" class="left-box clearfix">
+
+    <div class="task-box">
         <h2 class="part-title">Continuous Task</h2>
-    </a>
-    {% include "main/task/task.html" %}
+        {% include "main/task/task.html" %}
+    </div>
+
 </div>
 
-<div id="right-box" class="right-box grid_5 clearfix">
+<div id="right-box" class="right-box clearfix">
 
-    <div id="note-box" class="note-box grid_5 clearfix">
-        <a href="/note/overview_note/">
-            <h2 class="part-title">Fast Note</h2>
-        </a>
+    <div id="note-box" class="note-box clearfix">
+        <h2 class="part-title">Fast Note</h2>
         {% include "main/note/note.html" %}
     </div>
 
-    <div id="reminder-box" class="reminder-box grid_5 clearfix">
-        <a href="/reminder/overview_reminder/">
-            <h2 class="part-title">Reminder</h2>
-        </a>
+    <div id="reminder-box" class="reminder-box clearfix">
+        <h2 class="part-title">Reminder</h2>
         {% include "main/reminder/reminder.html" %}
     </div>
 

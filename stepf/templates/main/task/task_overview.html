@@ -3,43 +3,48 @@
 
 {% block main %}        
 
-<div id="task-box" class="task-box grid_12 clearfix">
+<div id="task-box" class="task-detail task-box clearfix">
 
-    <h2>Fast Note</h2>
-
-    <div class="boxed task-in-process grid_5">
+    <h2>Continous Task</h2>
+    <div class="boxed task-in-process">
         <h4>In Process</h4>
+        {% if not task_in_process %}
+            <h4 class="task-null">None</h4>
+        {% endif %}
         <ul id="task-list" class="task-list clearfix">
         {% for atask in task_in_process %}
         <li id={{ atask.pk|add_prefix:"task-"}} class="task-item">
             <div class="title">
-                <input type="checkbox"></input>
                 <a href="" title="{{ atask.title }}">{{ atask.title }}</a>
             </div>
         </li>
         {% endfor %}
         </ul>
     </div>
-    <div class="boxed task-done grid_5">
+    <div class="boxed task-done">
         <h4>Already Done</h4>
+        {% if not task_done %}
+            <h4 class="task-null">None</h4>
+        {% endif %}
         <ul id="task-list" class="task-list clearfix">
         {% for atask in task_done %}
         <li id={{ atask.pk|add_prefix:"task-"}} class="task-item">
             <div class="title">
-                <input type="checkbox"></input>
                 <a href="" title="{{ atask.title }}">{{ atask.title }}</a>
             </div>
         </li>
         {% endfor %}
         </ul>
     </div>
-    <div class="boxed task-deleted grid_5">
+    <div class="boxed task-deleted">
         <h4>Deleted</h4>
+        {% if not task_deleted %}
+            <h4 class="task-null">None</h4>
+        {% endif %}
         <ul id="task-list" class="task-list clearfix">
         {% for atask in task_deleted %}
         <li id={{ atask.pk|add_prefix:"task-"}} class="task-item">
             <div class="title">
-                <input type="checkbox"></input>
                 <a href="" title="{{ atask.title }}">{{ atask.title }}</a>
             </div>
         </li>

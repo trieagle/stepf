@@ -1,35 +1,40 @@
-@charset "utf-8";
 
 /* common style*/
 .box {
-    border:1px dotted black;
-           padding-bottom:8px;
-           margin-bottom:2px
+    border:1px dotted gray;
+    padding-bottom:8px;
+    margin-bottom:2px
 }
 
+.box .boxed .operation a {
+    border:1px solid gray;
+}
 .box .boxed .operation a:hover {
-    background:rgba(66, 151, 218, 0.6);
-    border:1px solid green;
+    background:rgba(169, 169, 169, 0.6);
+    border:1px solid darkgray;
 }
 .box .boxed .operation a:active {
-    background:rgba(66, 151, 218, 1);
+    background:rgba(169, 169, 169, 1);
 }
 h2.part-title {
-    padding:0;
-    margin:10px 0 0 0;
+    font-family:"楷体";
+    font-size:22px;
+    padding:2px;
+    margin:20px 0 5px 5px;
     color:darkgray !important;
 }
+
 /* end common style*/
 
 /*
  create part
  */
 .top-box {
-    margin-top:50px;
+    margin-top:3%;
 }
 
 .top-box .create {
-    margin:0 0 25px 30px;
+    margin:0 0 3% 10%;
 }
 
 /* set the up/down arrows */
@@ -41,113 +46,131 @@ h2.part-title {
     margin: 0px; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
-.top-box .type-select {
-    border:2px solid white;
+.top-box select.type-select {
+    color:dimgray;
+    margin:5px;
+    border:2px solid gray;
     margin-right:10px;
     cursor: pointer;
+    background-color:darkgray;
+
 }
 .top-box .type-select:hover {
-    background-color:darkgray;
+    border:2px solid darkgray;
+    background-color:gray;
 }
 
+.top-box .type-select:active {
+   color:dimgray;
+}
 .top-box .title-input, .top-box .time-input {
+    border:2px solid darkgray;
     padding-top:0px;
     padding-bottom:0px; 
     height:28px;
     border-radius:5px;
     margin-right:10px;
+    width:25%;
 }
 
-.top-box .para {
-    margin-right:10px;
-}
 .top-box .create .para {
     display:inline;
 }
 
 .top-box .step-input, .top-box .freq-input {
-    padding: 0;
+    border:2px solid darkgray;
+    margin-right:10px;
+    border-radius:5px;
     height: 28px;
+    width:65px;
+    padding: 0;
 }
 
 .top-box .create-button {
-    font-size:14px;
-    padding:0.5em 1em;
-    margin:0.5em;
-    border-radius:4px;
-    border:1px solid white;
+    font-size:16px;
+    color:dimgray;
+    padding:4px 8px;
+    margin:5px;
+    border-radius:5px;
+    border:2px solid gray;
+    background:darkgray;
     cursor: pointer;
 }
 
 .top-box .create-button:hover {
-    font-weight:bold;
-    background-color:darkgray;
+    border:2px solid darkgray;
+    background-color:gray;
     opacity:0.9;
 }
 .top-box .create-button:active {
-   opacity:1;
-   color:white;
+   color:darkgray;
 }
 
 /*
  share by left&right box
  */
 .boxed {
-    padding:0 9px 6px 0;
-    border:2px solid white;
+    position:relative;
+    border:2px solid dimgray;
 }
 
 .boxed  li {
     display:block;
-    border-bottom:1px dotted white;
     margin-top:12px;
-    margin-bottom:0px;
 }
 .boxed .operation {
     display:block;
     font-size:15px;
     text-align:right;
+    margin-right:5px;
 }
 
 .boxed .misc-operation {
     display:none;
-    font-size:13px;
+}
+
+div.boxed a.detail{
+    float:right;
+    font-size:14px;
+    padding-right:4px;
+}
+
+/* left-box */
+.left-box div.task-menu {
+    border-bottom:1px dashed dimgray;
+    width:98%;
+    margin-bottom:15px;
     text-align:right;
+    line-height:10px !important;
+    overflow:hidden;
+    padding:4px 4px 0 0;
 }
 
-
-
-.left-box {
-    padding-top:1px;
-    position:relative;
+.left-box .task-menu input.task-checkbox {
+    display:inline;
 }
-.left-box .task-menu {
-    position:absolute;
-    text-align:right;
-    top:5px;
-    right:5px;
-}
-.task-menu input.task-checkbox {
-    position:relative;
-    top:12px;
-    right:8px;
+.left-box .task-list .task-item {
+    margin:20px 0 20px 10px;
+    border-bottom:2px dotted dimgray;
+    padding-bottom:2px;
 }
 
-.left-box .title {
+.left-box .task-item .title {
     display:block;
     overflow:hidden;
     font-size:16px
 }
 
-/* 使input下沉 */
 .left-box .task-item .title input {
-    position:relative;
-    top:10px;
-    left:0px;
+    margin-right:4px;
 }
 
+.left-box li.task-item div.operation label, .left-box li.task-item div.operation a {
+    padding:0px;
+}
 .left-box div.process {
     overflow:hidden;
+    margin-left:16px;
 }
 
 .left-box ul.process-boar {
@@ -167,7 +190,7 @@ h2.part-title {
     width:13px;
     display:inline-block;
 	position:relative;
-	padding:8px 8px 3px 23px;
+	padding:8px 8px 6px 23px;
 	background:url(../img/nav-bg-left.png) no-repeat 0 0;
 }
 .left-box div.process li a.step-curr{
@@ -224,23 +247,80 @@ h2.part-title {
     border-radius:4px;
 }
 
-.right-box {
-    padding-left:22px;
-    float:right;
+
+.right-box ul.note-list li, .right-box ul.reminder-list li {
+    overflow:hidden;
+    padding-left:4px;
+}
+.right-box ul.note-list li div.operation, .right-box ul.reminder-list li div.operation {
+    position:relative;
+    top:-6px;
+    border-bottom:2px dotted dimgray;
 }
 
-.right-box .note-box, .right-box .reminder-box  {
-    float:right;
+.right-box div.boxed {
+    overflow:hidden;
 }
 
-
-/* make max visible length */
 .right-box .title {
     overflow:hidden;
-    font-size:18px !important;
-    vertical-align:text-bottom;
+    font-size:16px !important;
 }
-.right-box ul.note-list div.title{
-    position:relative;
-    top:4px;
+
+/* detail pages */
+.task-detail {
+    font-size:16px;
+}
+
+.task-detail h2 {
+    color:darkgray !important;
+    margin:5% 0 2% 2%;
+}
+
+.task-detail .boxed {
+    border:none;
+    border-top:2px solid darkgray;
+    padding:1% 0 2% 4%;
+}
+
+.task-detail .task-null {
+    padding-left:3%; 
+}
+
+.note-detail {
+    font-size:16px;
+}
+
+.note-detail h2 {
+    color:darkgray !important;
+    margin:5% 0 2% 2%;
+}
+
+.note-detail .boxed {
+    border:none;
+    border-top:2px solid darkgray;
+    padding:1% 0 2% 4%;
+}
+
+.note-detail .note-null {
+    padding-left:3%; 
+}
+
+.reminder-detail {
+    font-size:16px;
+}
+
+.reminder-detail h2 {
+    color:darkgray !important;
+    margin:5% 0 2% 2%;
+}
+
+.reminder-detail .boxed {
+    border:none;
+    border-top:2px solid darkgray;
+    padding:1% 0 2% 4%;
+}
+
+.reminder-detail .reminder-null {
+    padding-left:3%; 
 }
