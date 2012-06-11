@@ -1,0 +1,51 @@
+{% extends "main/mbase.html" %}
+{% load common_filters %}
+
+{% block main %}        
+
+<div id="task-box" class="task-box grid_12 clearfix">
+
+    <h2>Fast Note</h2>
+
+    <div class="boxed task-in-process grid_5">
+        <h4>In Process</h4>
+        <ul id="task-list" class="task-list clearfix">
+        {% for atask in task_in_process %}
+        <li id={{ atask.pk|add_prefix:"task-"}} class="task-item">
+            <div class="title">
+                <input type="checkbox"></input>
+                <a href="" title="{{ atask.title }}">{{ atask.title }}</a>
+            </div>
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="boxed task-done grid_5">
+        <h4>Already Done</h4>
+        <ul id="task-list" class="task-list clearfix">
+        {% for atask in task_done %}
+        <li id={{ atask.pk|add_prefix:"task-"}} class="task-item">
+            <div class="title">
+                <input type="checkbox"></input>
+                <a href="" title="{{ atask.title }}">{{ atask.title }}</a>
+            </div>
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="boxed task-deleted grid_5">
+        <h4>Deleted</h4>
+        <ul id="task-list" class="task-list clearfix">
+        {% for atask in task_deleted %}
+        <li id={{ atask.pk|add_prefix:"task-"}} class="task-item">
+            <div class="title">
+                <input type="checkbox"></input>
+                <a href="" title="{{ atask.title }}">{{ atask.title }}</a>
+            </div>
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

@@ -6,3 +6,8 @@ urlpatterns = patterns(
     url(r'remove_note/$', 'remove_note'),
     url(r'done_note/$', 'done_note'),
 )
+
+urlpatterns += patterns('',
+    url(r'overview_note/$','stepf.views.overview_note'),
+)
+

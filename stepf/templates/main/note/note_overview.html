@@ -1,0 +1,51 @@
+{% extends "main/mbase.html" %}
+{% load common_filters %}
+
+{% block main %}        
+
+<div id="note-box" class="note-box grid_12 clearfix">
+
+    <h2>Fast Note</h2>
+
+    <div class="boxed note-in-process grid_5">
+        <h4>In Process</h4>
+        <ul id="note-list" class="note-list clearfix">
+        {% for anote in note_in_process %}
+        <li id={{ anote.pk|add_prefix:"note-"}}>
+            <div class="title">
+                <a href="#" title="{{ anote.title }}">{{ anote.title }}
+                </a>
+            </div>
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="boxed note-done grid_5">
+        <h4>Already Done</h4>
+        <ul id="note-list" class="note-list clearfix">
+        {% for anote in note_done %}
+        <li id={{ anote.pk|add_prefix:"note-"}}>
+            <div class="title">
+                <a href="#" title="{{ anote.title }}">{{ anote.title }}
+                </a>
+            </div>
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="boxed note-deleted grid_5">
+        <h4>Deleted</h4>
+        <ul id="note-list" class="note-list clearfix">
+        {% for anote in note_deleted %}
+        <li id={{ anote.pk|add_prefix:"note-"}}>
+            <div class="title">
+                <a href="#" title="{{ anote.title }}">{{ anote.title }}
+                </a>
+            </div>
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
