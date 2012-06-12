@@ -112,7 +112,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.abspath('stepf/templates'),
-	'D:/pubfolder/work/trieage/stepf/stepf/templates',
+    'D:/pubfolder/work/trieage/stepf/stepf/templates', ## when deploy to apache
 )
 
 INSTALLED_APPS = (
