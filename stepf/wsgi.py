@@ -15,6 +15,13 @@ framework.
 """
 import os
 
+### add this to find stepf.settings
+import sys
+import django.core.handlers.wsgi
+sys.path.append('D:/pubfolder/work/trieage/stepf/stepf')
+sys.path.append('D:/pubfolder/work/trieage/stepf')
+## end
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "stepf.settings")
 
 # This application object is used by any WSGI server configured to use this

@@ -1,0 +1,326 @@
+
+/* common style*/
+.box {
+    border:1px dotted gray;
+    padding-bottom:8px;
+    margin-bottom:2px
+}
+
+.box .boxed .operation a {
+    border:1px solid gray;
+}
+.box .boxed .operation a:hover {
+    background:rgba(169, 169, 169, 0.6);
+    border:1px solid darkgray;
+}
+.box .boxed .operation a:active {
+    background:rgba(169, 169, 169, 1);
+}
+h2.part-title {
+    font-family:"楷体";
+    font-size:22px;
+    padding:2px;
+    margin:20px 0 5px 5px;
+    color:darkgray !important;
+}
+
+/* end common style*/
+
+/*
+ create part
+ */
+.top-box {
+    margin-top:3%;
+}
+
+.top-box .create {
+    margin:0 0 3% 10%;
+}
+
+/* set the up/down arrows */
+.top-box .create input::-webkit-outer-spin-button,
+.top-box .create input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: inline;
+    padding:0 0px 0 6px;
+    margin: 0px; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.top-box select.type-select {
+    color:dimgray;
+    margin:5px;
+    border:2px solid gray;
+    margin-right:10px;
+    cursor: pointer;
+    background-color:darkgray;
+
+}
+.top-box .type-select:hover {
+    border:2px solid darkgray;
+    background-color:gray;
+}
+
+.top-box .type-select:active {
+   color:dimgray;
+}
+.top-box .title-input, .top-box .time-input {
+    border:2px solid darkgray;
+    padding-top:0px;
+    padding-bottom:0px; 
+    height:28px;
+    border-radius:5px;
+    margin-right:10px;
+    width:25%;
+}
+
+.top-box .create .para {
+    display:inline;
+}
+
+.top-box .step-input, .top-box .freq-input {
+    border:2px solid darkgray;
+    margin-right:10px;
+    border-radius:5px;
+    height: 28px;
+    width:65px;
+    padding: 0;
+}
+
+.top-box .create-button {
+    font-size:16px;
+    color:dimgray;
+    padding:4px 8px;
+    margin:5px;
+    border-radius:5px;
+    border:2px solid gray;
+    background:darkgray;
+    cursor: pointer;
+}
+
+.top-box .create-button:hover {
+    border:2px solid darkgray;
+    background-color:gray;
+    opacity:0.9;
+}
+.top-box .create-button:active {
+   color:darkgray;
+}
+
+/*
+ share by left&right box
+ */
+.boxed {
+    position:relative;
+    border:2px solid dimgray;
+}
+
+.boxed  li {
+    display:block;
+    margin-top:12px;
+}
+.boxed .operation {
+    display:block;
+    font-size:15px;
+    text-align:right;
+    margin-right:5px;
+}
+
+.boxed .misc-operation {
+    display:none;
+}
+
+div.boxed a.detail{
+    float:right;
+    font-size:14px;
+    padding-right:4px;
+}
+
+/* left-box */
+.left-box div.task-menu {
+    border-bottom:1px dashed dimgray;
+    width:98%;
+    margin-bottom:15px;
+    text-align:right;
+    line-height:10px !important;
+    overflow:hidden;
+    padding:4px 4px 0 0;
+}
+
+.left-box .task-menu input.task-checkbox {
+    display:inline;
+}
+.left-box .task-list .task-item {
+    margin:20px 0 20px 10px;
+    border-bottom:2px dotted dimgray;
+    padding-bottom:2px;
+}
+
+.left-box .task-item .title {
+    display:block;
+    overflow:hidden;
+    font-size:16px
+}
+
+.left-box .task-item .title input {
+    margin-right:4px;
+}
+
+.left-box li.task-item div.operation label, .left-box li.task-item div.operation a {
+    padding:0px;
+}
+.left-box div.process {
+    overflow:hidden;
+    margin-left:16px;
+}
+
+.left-box ul.process-boar {
+    margin:0 auto;
+    list-style:none;
+}
+
+.left-box div.process li {
+    float:left;
+    border-bottom:none;
+    font-size:16px;
+    line-height:16px;
+    margin:2px;
+    padding-right:5px;
+}
+.left-box div.process li a {
+    width:13px;
+    display:inline-block;
+	position:relative;
+	padding:8px 8px 6px 23px;
+	background:url(../img/nav-bg-left.png) no-repeat 0 0;
+}
+.left-box div.process li a.step-curr{
+    border-bottom:2px solid white;
+}
+.left-box div.process li a.step-future {
+    border-bottom:2px solid darkgray;
+}
+.left-box div.process li a.step-past {
+    border-bottom:2px solid white;
+}
+
+.left-box div.process li a span {
+    position:absolute;
+	top:0px;
+	right:-15px;
+	width:15px;
+	height:32px;
+	background:url(../img/nav-bg-right.png) no-repeat top right;
+	z-index:100;
+}
+
+.left-box div.process li a:hover, .left-box div.process li a.step-curr {
+    background:url(../img/nav-bg-left.png) no-repeat 0 -32px !important;
+}
+.left-box div.process li a:hover span, .left-box div.process li a.step-curr span {
+    background:url(../img/nav-bg-right.png) no-repeat right bottom !important;
+}
+
+.left-box div.process div.message {
+    margin-top:10px;
+    border:1px solid white;
+    background:darkgray;
+    z-index:1100;
+}
+.left-box div.process div.message textarea {
+    display:block;  
+    padding:2px 4px 2px 4px;
+    margin:2px;
+    height:55px;
+    width:115px;
+    border:1px solid white;
+    border-radius:4px;
+
+}
+.left-box div.process div.message input.msg-ok {
+    float:right;
+    font-size: 16px;
+    padding:2px 4px 2px 4px;
+    margin:4px 10px 2px 0px;
+    height:25px;
+    width:39px;
+    border:1px solid white;
+    border-radius:4px;
+}
+
+
+.right-box ul.note-list li, .right-box ul.reminder-list li {
+    overflow:hidden;
+    padding-left:4px;
+}
+.right-box ul.note-list li div.operation, .right-box ul.reminder-list li div.operation {
+    position:relative;
+    top:-6px;
+    border-bottom:2px dotted dimgray;
+}
+
+.right-box div.boxed {
+    overflow:hidden;
+}
+
+.right-box .title {
+    overflow:hidden;
+    font-size:16px !important;
+}
+
+/* detail pages */
+.task-detail {
+    font-size:16px;
+}
+
+.task-detail h2 {
+    color:darkgray !important;
+    margin:5% 0 2% 2%;
+}
+
+.task-detail .boxed {
+    border:none;
+    border-top:2px solid darkgray;
+    padding:1% 0 2% 4%;
+}
+
+.task-detail .task-null {
+    padding-left:3%; 
+}
+
+.note-detail {
+    font-size:16px;
+}
+
+.note-detail h2 {
+    color:darkgray !important;
+    margin:5% 0 2% 2%;
+}
+
+.note-detail .boxed {
+    border:none;
+    border-top:2px solid darkgray;
+    padding:1% 0 2% 4%;
+}
+
+.note-detail .note-null {
+    padding-left:3%; 
+}
+
+.reminder-detail {
+    font-size:16px;
+}
+
+.reminder-detail h2 {
+    color:darkgray !important;
+    margin:5% 0 2% 2%;
+}
+
+.reminder-detail .boxed {
+    border:none;
+    border-top:2px solid darkgray;
+    padding:1% 0 2% 4%;
+}
+
+.reminder-detail .reminder-null {
+    padding-left:3%; 
+}
