@@ -1,6 +1,6 @@
 <div class="boxed clearfix">
 
-    <div id= "task-menu" class="task-menu clearfix">
+    <div id= "task-menu" class="task-menu operation clearfix">
         <input id="select-all-tasks" type="checkbox" class="task-checkbox" /> 
         <a id="move-select-forward" href="#">==></a>
         <a id="move-select-backward" href="#"><==</a>
@@ -12,4 +12,5 @@
         {% include "main/task/task_item.html" %}
     {% endfor %}
     </ul>
+    <a class="detail task-detail" href="/task/overview_task/">more</a>
 </div>

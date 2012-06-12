@@ -2,7 +2,7 @@
 {% load task_filters %}
 <li id={{ atask.pk|add_prefix:"task-"}} class="task-item">
     <div class="title">
-        <input type="checkbox"></input>
+        <input type="checkbox" />
         <a href="" title="{{ atask.title }}">{{ atask.title }}</a>
     </div>
     <div class="operation">
