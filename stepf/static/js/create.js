@@ -44,26 +44,7 @@ $(document).ready(function () {
         dataType: 'json',
         data: JSON.stringify(post_data),
         success: function (ret_task) {
-          //var task = ret_task[0];
-          //var html_data = '<li id={0} class="task-item">\
-          //                 <div class="title">\
-          //                   <input type="checkbox"></input>\
-          //                   <a>{1}</a>\
-          //                 </div>\
-          //                 <div class="operation">\
-          //                    <label>{2}/{3}</label>\
-          //                    <label>diary</label>\
-          //                    <a href="#">==></a>\
-          //                 </div>\
-          //                 <div>\
-          //                    <div class="misc-operation">\
-          //                 </div>\
-          //                 </li>';
-          //html_data = html_data.format("task-" + task.pk,
-          //                             task.fields.title,
-          //                             task.fields.curr_step,
-          //                             task.fields.nstep);
-          $('#task-list').append(ret_task);
+          ('#task-list').append(ret_task);
           $('.move-forward').click(move_forward_handler); //TODO
           $('.move-backward').click(move_backward_handler); //TODO
         }

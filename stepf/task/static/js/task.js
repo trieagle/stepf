@@ -1,61 +1,3 @@
-function move_handler(move_type) {
-  var delta = (move_type === "move-forward-") ? 1 : -1;
-  return function inner() {
-    var id_string = $(this).attr('id').replace(move_type, '');
-    var post_data = {'id': parseInt(id_string, 10),
-      'step': delta};
-    $.ajax({
-      url: '/task/update_step/',
-      type: 'post',
-      data: JSON.stringify(post_data),
-      success: function (stepped) {
-        if (stepped !== "") {
-          $('#task-' + id_string).replaceWith(stepped);
-          //$('#' + move_type + id_string).click(inner);
-          $('#move-forward-' + id_string).click(move_forward_handler); //TODO
-          $('#move-backward-' + id_string).click(move_backward_handler);
-          $('.inc-nstep').click(inc_nstep_handler);
-          $('.dec-nstep').click(dec_nstep_handler);
-          $('.task-step').click(message_handler);
-          $('.message-update-confirm').click(update_message);
-          $('.message').hide();
-        }
-      }
-    });
-    return false;
-  };
-}
-
-function nstep_handler(nstep_type) {
-  var delta = (nstep_type === "inc-nstep-") ? 1 : -1;
-  return function inner() {
-    var id_string = $(this).attr('id').replace(nstep_type, '');
-    var post_data = {
-      id: parseInt(id_string, 10),
-      step: delta
-    };
-    $.ajax({
-      url: 'task/update_nstep/',
-      type: 'post',
-      data: JSON.stringify(post_data),
-      success: function (stepped) {
-        if (stepped !== "") {
-          $('#task-' + id_string).replaceWith(stepped);
-          //$('#' + move_type + id_string).click(inner);
-          $('#move-forward-' + id_string).click(move_forward_handler); //TODO
-          $('#move-backward-' + id_string).click(move_backward_handler);
-          $('.inc-nstep').click(inc_nstep_handler);
-          $('.dec-nstep').click(dec_nstep_handler);
-          $('.task-step').click(message_handler);
-          $('.message-update-confirm').click(update_message);
-          $('.message').hide();
-        }
-      }
-    });
-    return false;
-  };
-}
-
 function delete_task_handler() {
   $('.task-item').each(function () {
     if ($(this).find('input').is(':checked')) {
@@ -77,63 +19,10 @@ function delete_task_handler() {
   return false;
 }
 
-//function move_forward_handler() {
-//  var id_string = $(this).attr('id').replace('move-forward-', '');
-//  var post_data = {'id': parseInt(id_string, 10),
-//                   'step': 1};
-//  $.ajax({
-//    url: '/task/update_step/',
-//    type: 'post',
-//    data: JSON.stringify(post_data),
-//    success: function (stepped) {
-//      if (stepped !== "") {
-//        $('#task-' + id_string).replaceWith(stepped);
-//        $('#move-forward-' + id_string).click(move_forward_handler);
-//      }
-//    }
-//  });
-//  return false;
-//}
-
-var move_forward_handler = move_handler('move-forward-');
-var move_backward_handler = move_handler('move-backward-');
-var inc_nstep_handler = nstep_handler('inc-nstep-');
-var dec_nstep_handler = nstep_handler('dec-nstep-');
-
-
-function move_select_forward() {
-  $('.task-item').each(function () {
-    if ($(this).find('input').is(':checked')) {
-      move_forward_handler.apply($(this).find('.move-forward'));
-    }
-  });
-  return false;
-}
-
-
-function move_select_backward() {
-  $('.task-item').each(function () {
-    if ($(this).find('input').is(':checked')) {
-      move_backward_handler.apply($(this).find('.move-backward'));
-    }
-  });
-  return false;
-}
-
-function message_handler() {
-  //TODO Avoid scan
-  $('.message').hide();
-  if ($(this).parent().find('div')) {
-    $(this).parent().find('div').show();
-  }
-  return false;
-}
-
-function update_message() {
-  var id_string = $(this).parent().attr('id').replace('message-', '');
+function update_message(msg_id, msg_content) {
   var post_msg = {
-    id: parseInt(id_string, 10),
-    content: $(this).parent().find('textarea').val()
+    id: msg_id,
+    content: msg_content
   };
   $.ajax({
     url: '/task/update_message/',
@@ -142,14 +31,101 @@ function update_message() {
     data: JSON.stringify(post_msg),
     success: function (updated) {
       if (updated) {
-        //TODO Avoid scan
-        $('.message').hide();
+        $('#message-' + msg_id.toString()).hide();
       }
     }
   });
 }
 
+function task_move(task_id, move_step) {
+  var post_task_move = {
+    'id': task_id,
+    'step': move_step
+  };
+  $.ajax({
+    url: '/task/update_step/',
+    type: 'post',
+    data: JSON.stringify(post_task_move),
+    success: function (stepped) {
+      if (stepped !== "") {
+        $('#task-' + task_id.toString()).replaceWith(stepped);
+        $('.message').hide();
+      }
+    }
+  });
+  return false;
+}
+
+function task_update_nstep(task_id, nstep_delta) {
+  var post_task_nstep = {
+    id: task_id,
+    step: nstep_delta
+  };
+  $.ajax({
+    url: 'task/update_nstep/',
+    type: 'post',
+    data: JSON.stringify(post_task_nstep),
+    success: function (stepped) {
+      if (stepped !== "") {
+        $('#task-' + task_id.toString()).replaceWith(stepped);
+        $('.message').hide();
+      }
+    }
+  });
+  return false;
+}
+
+function move_select_forward() {
+  $('.task-item').each(function () {
+    if ($(this).find('input').is(':checked')) {
+      task_move(parseInt($(this).attr('id').replace('task-', ''), 10), 1);
+    }
+  });
+  return false;
+}
+
+function move_select_backward() {
+  $('.task-item').each(function () {
+    if ($(this).find('input').is(':checked')) {
+      task_move(parseInt($(this).attr('id').replace('task-', ''), 10), -1);
+    }
+  });
+  return false;
+}
+
 $(document).ready(function () {
+  document.getElementById("task-list").addEventListener("click", function (e) {
+    if (!e.target) {
+      return;
+    }
+    if (e.target.className.indexOf("step-past") !== -1) {
+      $('.message').hide();
+      if ($(e.target).parent().find('div')) {
+        $(e.target).parent().find('div').show();
+      }
+      return;
+    }
+    if (e.target.className.indexOf("message-update-confirm") !== -1) {
+      update_message(parseInt(e.target.id.replace('msg-ok-', ''), 10),
+                     $(e.target).parent().find('textarea').val());
+      return;
+    }
+    switch (e.target.className) {
+    case "move-forward":
+      task_move(parseInt(e.target.id.replace('move-forward-', ''), 10), 1);
+      break;
+    case "move-backward":
+      task_move(parseInt(e.target.id.replace('move-backward-', ''), 10), -1);
+      break;
+    case "inc-nstep":
+      task_update_nstep(parseInt(e.target.id.replace('inc-nstep-', ''), 10), 1);
+      break;
+    case "dec-nstep":
+      task_update_nstep(parseInt(e.target.id.replace('dec-nstep-', ''), 10), -1);
+      break;
+    }
+  });
+
   $('#delete-select-task').click(delete_task_handler);
   $('#move-select-forward').click(move_select_forward);
   $('#move-select-backward').click(move_select_backward);
@@ -159,11 +135,5 @@ $(document).ready(function () {
       $(this).attr('checked', status);
     });
   });
-  $('.move-forward').click(move_forward_handler);
-  $('.move-backward').click(move_backward_handler);
-  $('.inc-nstep').click(inc_nstep_handler);
-  $('.dec-nstep').click(dec_nstep_handler);
   $('.message').hide();
-  $('.message-update-confirm').click(update_message);
-  $('.task-step').click(message_handler);
 });
