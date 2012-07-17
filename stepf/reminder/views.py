@@ -2,6 +2,7 @@
 from django.http import HttpResponse
 from django.utils import simplejson
 from django.core import serializers
+from django.template.loader import render_to_string
 
 from stepf.account.models import Account
 from stepf.reminder.models import Reminder
@@ -39,8 +40,12 @@ def create_reminder(request):
         title=new_reminder['title'],
         owner=_get_account(request.user),
         alarm_time=inner_time)
-    respones = serializers.serialize('json', [reminder])
-    return HttpResponse(respones, _mimetype)
+    #respones = serializers.serialize('json', [reminder])
+    rendered = render_to_string('main/reminder/reminder_item.html',
+                                {'areminder': reminder})
+    return HttpResponse(simplejson.dumps(rendered),
+                        content_type='application/json')
+    #return HttpResponse(respones, _mimetype)
 
 
 @debug_in_out

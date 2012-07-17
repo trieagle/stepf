@@ -2,6 +2,7 @@
 from django.http import HttpResponse
 from django.utils import simplejson
 from django.core import serializers
+from django.template.loader import render_to_string
 
 from stepf.account.models import Account
 from stepf.note.models import Note
@@ -34,8 +35,16 @@ def create_note(request):
     note = Note.objects.create(
         title=new_note['title'],
         owner=_get_account(request.user))
-    respones = serializers.serialize('json', [note])
-    return HttpResponse(respones, _mimetype)
+    #respones = serializers.serialize('json', [note])
+    if _DEBUG:
+        print note.title
+    rendered = render_to_string('main/note/note_item.html',
+                                {'anote': note})
+    if _DEBUG:
+        print rendered
+    return HttpResponse(simplejson.dumps(rendered),
+                        content_type='application/json')
+    #return HttpResponse(respones, _mimetype)
 
 @debug_in_out
 def remove_note(request):

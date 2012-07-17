@@ -1,13 +1,3 @@
-String.prototype.format = function () {
-  var formatted = this;
-  var i;
-  for (i = 0; i < arguments.length; i = i + 1) {
-    formatted = formatted.replace("{" + i + "}", arguments[i].toString());
-  }
-  return formatted;
-};
-
-
 $(document).ready(function () {
   $('#step').show();
   $('#alarm-time').hide();
@@ -44,9 +34,7 @@ $(document).ready(function () {
         dataType: 'json',
         data: JSON.stringify(post_data),
         success: function (ret_task) {
-          ('#task-list').append(ret_task);
-          $('.move-forward').click(move_forward_handler); //TODO
-          $('.move-backward').click(move_backward_handler); //TODO
+          $('#task-list').append(ret_task);
         }
       });
     }
@@ -61,25 +49,7 @@ $(document).ready(function () {
         dataType: 'json',
         data: JSON.stringify(post_data),
         success: function (ret_note) {
-          var note = ret_note[0];
-          var html_data = '<li id={0}>\
-                             <div class="title">\
-                                 <a href="#">{1}\
-                                 </a>\
-                             </div>\
-                             <div class="operation">\
-                             <a class="delete-note" id={2} href="#" class title="remove this note">delete</a>\
-                             <span class="lsep">|</span>\
-                             <a class="done-note" id={3} href="#" class title="done this note">done</a>\
-                             </div>\
-                          </li>';
-          html_data = html_data.format("note-" + note.pk,
-                                       note.fields.title,
-                                       "delete-note-" + note.pk,
-                                       "done-note-" + note.pk);
-          $('#note-list').append(html_data);
-          $('#delete-note-' + note.pk).click(delete_note_handler);
-          $('#done-note-' + note.pk).click(done_note_handler);
+          $('#note-list').append(ret_note);
         }
       });
     }
@@ -95,29 +65,7 @@ $(document).ready(function () {
         dataType: 'json',
         data: JSON.stringify(post_data),
         success: function (ret_reminder) {
-          var reminder = ret_reminder[0];
-          var html_data = '<li id={0}>\
-                           <div class="title">\
-                             <a href="#">{1}</a>\
-                           </div>\
-                           <div class="operation">\
-                             <a class="delete-reminder" id={2} href="" class title="remove this reminder">delete</a>\
-                             <span class="lsep">|</span>\
-                             <a class="done-reminder" id={3} href="" class title="done this reminder">done</a>\
-                           </div>\
-                           <div class="misc-operation">\
-                             <label>Time:<label>\
-                             <span>{4}</span>\
-                           </div>\
-                           </li>';
-          html_data = html_data.format("reminder-" + reminder.pk,
-                                       reminder.fields.title,
-                                       "delete-reminder-" + reminder.pk,
-                                       "done-reminder-" + reminder.pk,
-                                       post_data.alarm_time);
-          $('#reminder-list').append(html_data);
-          $('#delete-reminder-' + reminder.pk).click(delete_reminder_handler);
-          $('#done-reminder-' + reminder.pk).click(done_reminder_handler);
+          $('#reminder-list').append(ret_reminder);
         }
       });
     }
